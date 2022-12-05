@@ -1,0 +1,10 @@
+
+.ProfileLeft{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1 rem;
+    height: 100vh;
+    overflow: auto;
+    margin-left: 10px;
+}
