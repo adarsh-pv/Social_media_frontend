@@ -12,7 +12,7 @@ const InfoCard = () => {
       <div className="InfoHead">
         <h4>Your Info</h4>
         <div>
-          <UilPen width="2rem" height="1.2rem" onClick={() => setModalOpened(true)} />
+          <UilPen width="2rem" height="1.2rem" onClick={() => setModalOpened(true)}/>
         <ProfileModel modalOpened={modalOpened} setModalOpened={setModalOpened} />
         </div>
       </div>

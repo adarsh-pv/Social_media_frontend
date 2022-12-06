@@ -10,10 +10,29 @@ import Heart from '../../img/like.png';
 import NotLike from '../../img/notlike.png';
 import { grey } from '@material-ui/core/colors';
 import { useState } from 'react';
-import { fetchposts } from '../../Apirequests/postapis';
+import { fetchposts, likepost } from '../../Apirequests/postapis';
 import { useEffect } from 'react';
 
 const Post = ({ data }) => {
+  // const [likedcount,setLikedcunt] = useState('')
+  const handlePostLike = async(id) =>{
+    const res = await likepost(id)
+    console.log(res)
+
+  if(res.data.response.liked===false){
+    console.log("unliked")
+    console.log(res.data.count)
+    // setLikedcunt(res.data.count)
+  }
+  if(res.data.response.liked===true){
+    console.log("liked")
+    console.log(res.data.count)
+    // setLikedcunt(res.data.count)
+
+
+  }
+}
+
   const [posts, setPosts] = useState([]);
   const allposts = async () => {
     const response = await fetchposts();
@@ -22,16 +41,16 @@ const Post = ({ data }) => {
   useEffect(() => {
     allposts();
   }, []);
-  console.log(posts, 'posts');
   return (
     <>
       {posts.map((post) => {
         return (
           <div className="Post">
             <img src={post.image} alt="" />
-
             <div className="postReact">
-              <img src={data?.liked ? Heart : NotLike} alt="" />
+              <img 
+              onClick={() => handlePostLike(post._id)}
+              src={data?.liked  ? Heart : NotLike} alt="" />
               <img src={Comment} alt="" />
               <img src={Share} alt="" />
             </div>

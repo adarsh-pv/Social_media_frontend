@@ -13,6 +13,7 @@ export const requestsapi = async (body) => {
 export const loginapi = async (body) => {
   return await Instance.post('login', { body });
 };
+
 export const verifyuser = async () => {
   return await Instance.get('/verify');
 };
