@@ -52,9 +52,9 @@ const SignUp = () => {
       password: '',
       conpassword: ''
     },
-    onSubmit: (values) => {
-      requestsapi(values);
-
+    onSubmit:async (values) => {
+    const response = await  requestsapi(values);
+    console.log(response,"resss")
       console.log('onsubmit ', values);
     },
     validationSchema

@@ -1,12 +1,14 @@
 /* eslint-disable prettier/prettier */
-import LoginPage from '../pages/login';
-import SignupPage from '../pages/signup';
-import Home from '../pages/Home';
+import LoginPage from '../Pages/login';
+import SignupPage from '../Pages/signup';
+import Home from '../Pages/Home';
 import PublicRoutes from './PublicRoutes';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Profile from '../pages/Profile/Profile';
+import Profile from '../Pages/Profile';
 import React from 'react';
 import PrivateRoute from './PrivateRoutes';
+import Allusers from '../Pages/Allusers';
+import Savedposts from '../Pages/Savedpost';
 
 export default function Routers() {
   return (
@@ -35,12 +37,29 @@ export default function Routers() {
           }></Route>
         {/* <Route path='/home' element={<Home />}></Route> */}
         <Route
-          path="/profile"
+          path="/profile/:id" 
+          
           element={
             <PrivateRoute>
               <Profile />
             </PrivateRoute>
           }></Route>
+          <Route
+          path='/allusers'
+          element={
+          <PrivateRoute>
+            <Allusers/>
+          </PrivateRoute>
+          }
+          ></Route>
+          <Route
+          path='/savedpost'
+          element={
+          <PrivateRoute>
+            <Savedposts/>
+          </PrivateRoute>
+          }
+          ></Route>
       </Routes>
     </BrowserRouter>
   );

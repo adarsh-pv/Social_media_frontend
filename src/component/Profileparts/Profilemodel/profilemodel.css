@@ -1,0 +1,17 @@
+.infoI{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border: none;
+    outline: none;
+    background-color: rgba(40, 52, 62, 0.07);
+    border-radius: 10px;
+
+    /* flex: 1 1; */
+}
+.infoForm{
+    display: flex;
+    justify-content: center;
+}
+
+

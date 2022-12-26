@@ -1,22 +1,24 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
+import React from 'react';
 import '../App.css';
-import './home.css';
+import AllUsers from '../component/Profileparts/Allusers/AllUsers';
 import Profileside from '../component/Profileparts/ProfileSide/profileside';
-import PostSide from '../component/Feed/PostSide/PostSide';
 import RightSide from '../component/Common/RightSide/RightSide';
-function Homepage() {
+
+import './allusers.css'
+
+const Allusers = () => {
   return (
     <div className="App">
       <div className="blur" style={{ top: '-18%', right: '0' }}></div>
       <div className="blur" style={{ top: '36%', left: '-8rem' }}></div>
-      <div className="Home">
+      <div className="allusers">
         <Profileside />
-        <PostSide location='home' />
-        <RightSide />
+      <AllUsers />
+      <RightSide/>
       </div>
     </div>
   );
-}
-export default Homepage;
+};
+
+export default Allusers;

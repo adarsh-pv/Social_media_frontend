@@ -1,0 +1,21 @@
+.user{
+    display: flex;
+   
+}
+.users{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.users:hover {background-color: rgb(234, 133, 2); font-weight: 800;}
+
+
+.userside{
+    width:auto;
+    display: flex;
+    justify-content:space-around
+}
+.card{
+    display: flex;
+    flex-direction: row;
+}

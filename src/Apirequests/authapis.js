@@ -17,3 +17,46 @@ export const loginapi = async (body) => {
 export const verifyuser = async () => {
   return await Instance.get('/verify');
 };
+export const profiledata = async (data) => {
+  return await Instance.post('/profileextradata',{data})
+}
+export const profilephoto = async (body) =>{
+  console.log(body,"sjjksdfjkdfjkdf")
+  return await Instance.post('/profilephoto', {body})
+}
+export const coverphoto = async (body) =>{
+  console.log(body,"sjjksdfjkdfjkdf")
+  return await Instance.post('/coverphoto', {body})
+}
+export const fetchProfileDetails = async ()=>{
+  return await Instance.get('/profileDetails')
+}
+export const fetchUsers = async () =>{
+  console.log("first")
+  return await Instance.get('/allusers')
+}
+export const follow = async (body) =>{
+  return await Instance.post('/follow',{body})
+}
+export const userProfile = async (body) =>{
+  console.log(body,"rtrt")
+  return await Instance.post('/userprofile',{body})
+}
+// export const savedposts=async (body)=>{
+//   console.log(body,"cjd")
+//   return await Instance.post('/savedposts',{body})
+// }
+export const fetchusers= async () =>{
+  console.log("kkkkkh")
+  return await Instance.get('/fetchallusers')
+}
+export const followingusers = async ()=>{
+  console.log("fddddddd")
+  return await Instance.get('/followingusers')
+}
+export const follwersusers = async ()=>{
+  return await Instance.get('/followersusers')
+}
+export const logineduser = async ()=>{
+  return await Instance.get('/logineduser')
+}

@@ -10,7 +10,7 @@ import { loginapi } from '../../Apirequests/authapis';
 import cookie from 'universal-cookie';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setAuth, setName } from '../../store/authSlice';
+import { setAuth, setName, setUserid } from '../../Store/authSlice';
 import toast,{Toaster} from 'react-hot-toast'
 
 // import '../../App.css'
@@ -32,7 +32,7 @@ const Login = () => {
     onSubmit: async (values) => {
       console.log('onsubmit', values);
       let response = await loginapi(values);
-      console.log(response,"res");
+    
       if(response.data.maessage === "Invalid password" ){
         toast.error( "Invalid password",{
           icon: ' 🔕 ',
@@ -55,11 +55,15 @@ const Login = () => {
       }
       
       if (response.data.token) {
+        console.log(response)
         // <Navigate to="/home" replace={true} />;
+        console.log(response,"killadi") 
         const Cookie = new cookie();
-        Cookie.set('token', response.data.token);
+        localStorage.setItem('userid',response.data._id)
+        dispatch(setUserid(response.data._id))
         dispatch(setName(response.data.name));
         dispatch(setAuth(true));
+        Cookie.set('token', response.data.token);
         Navigate('/home');
       }
     },
