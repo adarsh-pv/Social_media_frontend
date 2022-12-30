@@ -6,7 +6,7 @@ import React from 'react';
 import './Post.css';
 import {useParams} from 'react-router-dom'
 import { useState } from 'react';
-import { fetchposts, showmyposts} from '../../../Apirequests/postapis';
+import { fetchposts, fetchsaveditems, showmyposts} from '../../../Apirequests/postapis';
 import { useEffect } from 'react';
 // import { Commentlist } from '../comment/Comment';
 import Post from '../Post/Post';
@@ -17,20 +17,25 @@ const Postlist = ({ data,post }) => {
   console.log(post,'this is the post sider')
   const [posts, setPosts] = useState([]);
   const [profilepost,setProfilepost] = useState([])
+  const [savedpost,setSavedpost] = useState([])
   const allposts = async () => {
     const response = await fetchposts();
     console.log(response,"resssssssss")
     setPosts(response.data);
   };
+  const fetchsavedpost = async () =>{
+    const response = await fetchsaveditems()
+    setSavedpost(response.data)
+   }
   const showmypost= async ()=>{
     const response = await showmyposts()
-    console.log(response,"my profile is here for you")
     setProfilepost(response.data)
   }
 
   useEffect(() => {
     allposts();
     showmypost();
+    fetchsavedpost();
   }, []);
   return (
     <>
@@ -39,15 +44,19 @@ const Postlist = ({ data,post }) => {
        return (
          <Post post={post} allposts={allposts}/>
          );
-        }):profilepost.map((post)=>{
+        }):post==='profile'? profilepost.map((post)=>{
         console.log(profilepost)
         return(
           <Post post={post} allposts={showmypost}/>
         )
-      })}
-    
-    </>
-  );
-};
-
+        }):savedpost.map((post)=>{
+          return(
+            <Post post={post} allposts={savedpost}/>
+          )
+          })
+        }
+     
+        </>
+        )
+          }
 export default Postlist;

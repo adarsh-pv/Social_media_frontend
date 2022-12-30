@@ -20,5 +20,6 @@ const AuthSlice = createSlice({
     }
   }
 });
+
 export const { setName, setAuth ,setUserid } = AuthSlice.actions;
 export default AuthSlice;

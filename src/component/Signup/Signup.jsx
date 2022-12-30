@@ -55,7 +55,6 @@ const SignUp = () => {
     onSubmit:async (values) => {
     const response = await  requestsapi(values);
     console.log(response,"resss")
-      console.log('onsubmit ', values);
     },
     validationSchema
   });

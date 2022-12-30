@@ -63,14 +63,7 @@ function Post({post,allposts}) {
         <span> {post ? post.caption : null} </span> : null
         }
         <div>
-        {/* <Commentlist post={post._id} /> */}
         </div>
-        {/* <div>
-                <p>{post.comments.map((comment)=>{
-                  <p>{comment.content}</p>
-                  console.log(comment.content)
-                })}</p>
-              </div> */}
        {commentOpen && <Commentshow post={post._id} />}
       </div>
     </div>

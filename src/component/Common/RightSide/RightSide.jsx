@@ -2,10 +2,13 @@
 import React from 'react';
 import './RightSide.css';
 import Home from '../../../img/home.png'
-import Noti from '../../../img/noti.png';
+
 import Comment from '../../../img/comment.png';
 import { UilUser } from '@iconscout/react-unicons';
 import TrendCard from '../TrendCard/TrendCard';
+import { UilBookmark } from '@iconscout/react-unicons';
+// import { UilCloudBookmark } from '@iconscout/react-unicons';
+
 import { useNavigate } from 'react-router-dom';
 // import TrendCard from "../TrendCard/TrendCard";
 // import ShareModal from "../ShareModal/ShareModal";
@@ -14,11 +17,12 @@ const RightSide = () => {
   return (
     <div className="RightSide">
       <div className="navIcons">
-        <img src={Home} alt="" />
+        <img src={Home} alt="" onClick={()=>navigate('/home')}/>
         <UilUser
          onClick={()=>navigate(`/allusers`)}/>
-        <img src={Noti} alt="" />
-        <img src={Comment} alt="" />
+        <UilBookmark
+         onClick={()=>navigate(`/savedpost`)}/>
+        <img src={Comment} alt=""  onClick={()=>navigate('/chat')}/>
       </div>
       <TrendCard />
 

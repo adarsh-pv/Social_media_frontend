@@ -8,6 +8,8 @@ import { UilLocationPoint } from '@iconscout/react-unicons';
 import { UilSchedule } from '@iconscout/react-unicons';
 import { UilTimes } from '@iconscout/react-unicons';
 import { createpost } from '../../../Apirequests/postapis';
+import { UilBookmark } from '@iconscout/react-unicons';
+
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 // import { useState } from 'react'
@@ -17,7 +19,6 @@ const PostShare = () => {
   const imageRef = useRef();
   const [imageSelected, setImageSelected] = useState('');
   const onImageChange = (event) => {
-    
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
       console.log(img);
@@ -27,31 +28,31 @@ const PostShare = () => {
       });
     }
   };
- const navigate = useNavigate()
+  const navigate = useNavigate();
   const uploadImage = (files) => {
-    console.log(files,"mb")
+    console.log(files, 'mb');
     files.preventDefault();
     console.log(files[0], 's');
-    if(imageSelected){
+    if (imageSelected) {
       const formData = new FormData();
       const textData = new FormData();
       console.log('dddd', imageSelected);
       formData.append('file', imageSelected);
-  
+
       textData.append('text', text);
-  
+
       formData.append('upload_preset', 'post_cloud');
-  
+
       axios
         .post('https://api.cloudinary.com/v1_1/dufx7jvrn/image/upload', formData)
         .then((response) => {
           createpost({ image: response.data.secure_url, caption: text });
           // console.log(response.data.secure_url,"hia")
         });
-      }else{
-        createpost({caption:text}) 
-      }
-      
+    } else {
+      createpost({ caption: text });
+    }
+
     // createpost(text)
   };
 
@@ -74,15 +75,12 @@ const PostShare = () => {
             Photo
           </div>
           <div className="option" style={{ color: '#4A4EB7' }}>
-
-            <UilUser 
-          onClick={() =>navigate(`/allusers`)}
-          />
+            <UilUser onClick={() => navigate(`/allusers`)} />
             Allusers
           </div>
           <div className="option" style={{ color: '#EF5757' }}>
-            <UilLocationPoint />
-            Location
+            <UilBookmark onClick={()=>navigate('/savedpost')}/>
+            Savedposts
           </div>
           <div className="option" style={{ color: '#E1AE4A' }}>
             <UilSchedule />

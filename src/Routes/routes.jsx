@@ -9,6 +9,7 @@ import React from 'react';
 import PrivateRoute from './PrivateRoutes';
 import Allusers from '../Pages/Allusers';
 import Savedposts from '../Pages/Savedpost';
+import Chat from '../Pages/Chat';
 
 export default function Routers() {
   return (
@@ -57,6 +58,14 @@ export default function Routers() {
           element={
           <PrivateRoute>
             <Savedposts/>
+          </PrivateRoute>
+          }
+          ></Route>
+          <Route
+          path='/chat'
+          element={
+          <PrivateRoute>
+            <Chat/>
           </PrivateRoute>
           }
           ></Route>

@@ -57,7 +57,6 @@ const Login = () => {
       if (response.data.token) {
         console.log(response)
         // <Navigate to="/home" replace={true} />;
-        console.log(response,"killadi") 
         const Cookie = new cookie();
         localStorage.setItem('userid',response.data._id)
         dispatch(setUserid(response.data._id))
