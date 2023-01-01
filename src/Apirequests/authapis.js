@@ -60,3 +60,6 @@ export const follwersusers = async ()=>{
 export const logineduser = async ()=>{
   return await Instance.get('/logineduser')
 }
+export const getUser = async (id)=>{
+  return await Instance.get(`/getUserdata/${id}`)
+}

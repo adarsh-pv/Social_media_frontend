@@ -13,8 +13,6 @@ import { useEffect } from 'react';
 
 function ProfileModel({ modalOpened, setModalOpened }) {
   const theme = useMantineTheme();
-  // const [image, setImg] = useState(null);``
-  // const [imageSelected, setImageSelected] = useState('');
 
   const [fullname, setfullname] = useState('');
   const [number, setNumber] = useState('');
@@ -29,9 +27,8 @@ function ProfileModel({ modalOpened, setModalOpened }) {
 
   const handleSubmit =  (event) => {
     event.preventDefault();
-    console.log(fullname, number, livesin, works, DOB, githublink, linkdinlink, status, 'jjhaiiij');
     profiledata({ fullname, number, livesin, works, DOB, githublink, linkdinlink, status });
-    
+      
   };
   const fields = async () =>{
     const response = await fetchProfileDetails()
@@ -136,18 +133,7 @@ function ProfileModel({ modalOpened, setModalOpened }) {
 
         <div>
           <Button type='submit' className="button"  >Applay</Button>
-          {/* Profile Image */}
-          {/* <input type="file" hidden name="p rfileImage" onChange={onImageChange} /> */}
-          {/* <Button className="button" onClick={uploadImage}>
-            Apply
-          </Button> */}
-          {/* Cover Image */}
-          {/* <input type="file" hidden name="coverImage" onChange={onCoverImageChange} /> */}
-          {/* <Button className="button" onClick={()=>{uploadImage();
-            uploadcoverImage()}} type="submit">Apply</Button> */}
-          {/* <Button className="button" type="submit" onClick={uploadcoverImage}>
-            Apply
-          </Button> */}
+         
         </div>
       </form>
     </Modal>

@@ -38,9 +38,7 @@ const PostShare = () => {
       const textData = new FormData();
       console.log('dddd', imageSelected);
       formData.append('file', imageSelected);
-
       textData.append('text', text);
-
       formData.append('upload_preset', 'post_cloud');
 
       axios

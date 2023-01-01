@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Cookies from 'universal-cookie';
 import { verifyuser } from '../Apirequests/authapis';
-import { setAuth, setName } from '../Store/authSlice';
+import { setAuth, setName, setUserid } from '../Store/authSlice';
 function PrivateRoute({ children }) {
   const cookie = new Cookies();
   const token = cookie.get('token');
@@ -30,6 +30,7 @@ function PrivateRoute({ children }) {
         if (res.data.name) {
           dispatch(setAuth(true));
           dispatch(setName(res.data.name));
+          dispatch(setUserid(res.data.id))
         } else {
           cookie.remove('token');
           return Navigate('/');
