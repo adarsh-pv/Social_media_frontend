@@ -17,40 +17,43 @@ const navigate = useNavigate()
 
   return (
     <Card sx={{ maxWidth: 250, maxHeight: 230 }} className="card">
-      <CardActionArea>
-        <CardMedia
+
+          <CardActionArea>
+
+          <CardMedia
           component="img"
           height="100"
           onClick={() =>navigate(`/profile/${user._id}`)}
-          src={user.profileimage ? user.profileimage : unknownuser}
+          src={ user.profileimage ? user.profileimage : unknownuser}
           alt="green iguana"
-        />
-        <CardContent>
+          />
+            <CardContent>
           <Typography gutterBottom variant="h6" component="div">
             {user?.name}
           </Typography>
           {followbutton.following ? (
             <button
-              className="button fc-button"
-              onClick={(e) => {
-                e.preventDefault();
-                follows(user._id);
-              }}>
-              follow
+            className="button fc-button"
+            onClick={(e) => {
+              e.preventDefault();
+              follows(user._id);
+            }}>
+            follow
             </button>
-          ) : (
+            ) : (
             <button
-              className="button fc-button"
-              onClick={(e) => {
-                e.preventDefault();
-                follows(user._id);
-              }}>
-              unfollow
+            className="button fc-button"
+            onClick={(e) => {
+              e.preventDefault();
+              follows(user._id);
+            }}>
+            unfollow
             </button>
-          )}
-        </CardContent>
-      </CardActionArea>
-    </Card>
+            )}
+            </CardContent>
+            </CardActionArea>
+          
+            </Card>
   );
 };
 

@@ -10,25 +10,15 @@ import { useEffect } from 'react';
 import { fetchUsers } from '../../../Apirequests/authapis';
 import { useState } from 'react';
 import User from '../User/User';
+import { useSelector } from 'react-redux';
 // import unknownuser from '../../../img/unknown.png';
 // import ProfileCard from '../../Profileparts/ProfileCard/ProfileCard';
-const FollowersCard = () => {
-  // const [profile,setProfile] = useState('')
-// const userProfiles =async (body) =>{
-//  const profiles = await userProfile(body)
-//  setProfile(profiles)
-// }
+const FollowersCard = ({location}) => {
+
 const [followbutton, setButton] = useState(false);
-// const follows = async (id) => {
-//   const response = await follow(id);
-//   setButton(response.data);
-//   console.log(response, 'following');
-// };
-// useEffect(() => {
-//   follows();
-// }, []);
-// console.log(profile,"pop")
-  console.log(followbutton, 'YYYY');
+const {peoples} = useSelector((state) =>state.userReducer)
+
+
   const [users, setUser] = useState([]);
   const fetchUser = async () => {
     const response = await fetchUsers();
@@ -43,14 +33,16 @@ const [followbutton, setButton] = useState(false);
 
   return (
     <div className="FollowersCard">
-      <h3>following suggetions
-      </h3>
+     {location == 'chat' ? <h3>search</h3> :<h3>following suggetions
+      </h3> }
       {/* <user /> */}
 
-      {users.map((user) => {
+      {peoples?.length== 0 ?users.map((user) => {
         // return (
-         return <User key={user._id} user={user} />  
+         return <User key={user._id} user={user} location={location} />  
         // );
+      }):peoples.map((users)=>{
+        return <User key={users._id} user={users} location={location}/>
       })}
     </div>
   );

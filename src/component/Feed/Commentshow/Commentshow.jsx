@@ -49,7 +49,6 @@ function Commentshow({ post }) {
               <h4>{cmnts?.username.name}</h4>
               <div>{cmnts?.comments?.content}</div>
               <div className="cmt">{format(cmnts?.comments?.Date)}</div>
-              {/* <p>{cmnts?.comments?.Date.toUtcstring()}</p> */}
               {console.log(cmnts?.comments?.Date, 'adarxh')}
               <br />
             </>

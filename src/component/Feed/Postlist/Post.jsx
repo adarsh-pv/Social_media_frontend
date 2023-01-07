@@ -10,9 +10,7 @@ import { fetchposts, fetchsaveditems, showmyposts} from '../../../Apirequests/po
 import { useEffect } from 'react';
 // import { Commentlist } from '../comment/Comment';
 import Post from '../Post/Post';
-// import { commentlist } from '../comment/comment';
 
-// eslint-disable-next-line no-unused-vars
 const Postlist = ({ data,post }) => {
   console.log(post,'this is the post sider')
   const [posts, setPosts] = useState([]);
@@ -20,15 +18,16 @@ const Postlist = ({ data,post }) => {
   const [savedpost,setSavedpost] = useState([])
   const allposts = async () => {
     const response = await fetchposts();
-    console.log(response,"resssssssss")
     setPosts(response.data);
   };
   const fetchsavedpost = async () =>{
     const response = await fetchsaveditems()
     setSavedpost(response.data)
    }
+  const {id} = useParams()
+
   const showmypost= async ()=>{
-    const response = await showmyposts()
+    const response = await showmyposts(id)
     setProfilepost(response.data)
   }
 

@@ -9,7 +9,6 @@ import { format } from 'timeago.js';
 
 // eslint-disable-next-line react/prop-types
 const Chatbox = ({chat,currenUser,setSendMessage,receiveMessage}) => {
-  console.log(chat,"fundaaaaaaaaa")
   const [userData, setUserdata] = useState(null);
   const [messages,setMessages] = useState([])
   const [newMessage,setNewMessage] = useState("")
@@ -61,7 +60,6 @@ const Chatbox = ({chat,currenUser,setSendMessage,receiveMessage}) => {
     if(message.text ===  ''){
 
       const {data} = await addMessage();
-      console.log(data,"ddddd")
     }else{
 
     
@@ -108,7 +106,7 @@ const Chatbox = ({chat,currenUser,setSendMessage,receiveMessage}) => {
           <hr style={{width:'85%',border:'0.1px solid #ececec',marginTop:'10px'}}/>
         </div>
         <div className="chat-body">
-          {messages.map((message) =>(
+          {messages?.map((message) =>(
             <>
             <div ref={scroll} className={message.SenderId === currenUser ? "message own":"message"}>
               <span>{message.text}</span>

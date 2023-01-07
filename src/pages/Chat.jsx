@@ -16,6 +16,7 @@ import Chatbox from '../component/Chat/Chatbox/Chatbox'
 import { useSelector } from 'react-redux'
 import { userChats } from '../Apirequests/chatapis'
 import {io} from 'socket.io-client'
+import FollowersCard from '../component/Common/FollowersCard/FollowersCard'
 const Chat = () => {
   const [chats,setChats] = useState([])
   const [currenChat,setCurrentChat] = useState(null)
@@ -33,11 +34,10 @@ const Chat = () => {
    },[sendMessage])
   useEffect(()=>{
    socket.current = io('http://localhost:8800')
-   socket.current.emit("new-uer-add",userid)
+   socket.current.emit("new-user-add",userid)
    socket.current.on('get-Users', (users) =>{
     setOnlineUsers(users);
   })
-  
 },[userid])
 
 useEffect(()=>{
@@ -50,7 +50,6 @@ useEffect(()=>{
 
 useEffect(()=>{
   socket.current.on("receive-message",(data)=>{
-    console.log("Data received in parent chat.jsx",data)
     setReceiveMessage(data)
   })
 },[])
@@ -61,6 +60,7 @@ const checkOnlineStatus = (chat) =>{
   const online = onlineUsers.find((user)=>user.userId ===chatMember)
   return online? true : false
 }
+
 return (
   <div className="App">
     <div className="blur" style={{ top: '-18%', right: '0' }}></div>
@@ -71,10 +71,11 @@ return (
         <LogoSearch/>
         <div className='Chat-container'>
 
+        <FollowersCard location='chat'/>
         <h2>Chats</h2>
       <div className='Chat-list'>
         {chats.map((chat)=>{
-
+    console.log(chat,"useuseuseuse")
         return   (<div onClick={()=>setCurrentChat(chat)}>
              <Conversation key={chat._id} data={chat} currentUserId={userid} online={checkOnlineStatus(chat)}/> 
            </div> )

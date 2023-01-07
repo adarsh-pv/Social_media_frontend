@@ -53,6 +53,16 @@ const Login = () => {
         }
       })
       }
+      if(response.data.message === "You're Blocked"){
+        toast.error( "Sorry for inconvenience you're Blocked",{
+          icon: ' 🚷 🚷 ',
+        style: {
+            width: '350px',
+            backgroundColor:'lightblue',
+            fontSize: '15px',
+        }
+      })
+      }
       
       if (response.data.token) {
         console.log(response)
@@ -130,5 +140,6 @@ const Login = () => {
     );
   }
 };
+
 
 export default Login;

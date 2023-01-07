@@ -22,7 +22,7 @@ const Conversation = ({ data, currentUserId,online}) => {
     }
     }
     userId&&  getUserData();
-  },[]);
+  },[]);  
   return (
     <>
       <div className="follower conversation">

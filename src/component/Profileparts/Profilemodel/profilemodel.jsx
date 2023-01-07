@@ -9,10 +9,14 @@ import { fetchProfileDetails, profiledata} from '../../../Apirequests/authapis';
 import './profilemodel.css';
 import * as Yup from 'yup';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setAllusersdata } from '../../../Store/usersSlice';
+
 // const imageRef = useRef();
 
 function ProfileModel({ modalOpened, setModalOpened }) {
   const theme = useMantineTheme();
+  const dispatch = useDispatch()
 
   const [fullname, setfullname] = useState('');
   const [number, setNumber] = useState('');
@@ -24,30 +28,34 @@ function ProfileModel({ modalOpened, setModalOpened }) {
   const [status, setStatus] = useState('');
   const [previousname,setPreveousname] = useState('')
 
-
+  //  setfullname(previousname.name)
+  //  setNumber(previousname.number)
+  //  setLinkdinlik(previousname.linkdinid)
+  //  setDOB(previousname.dob)
+  //  setWorks(previousname.workat)
+  //  setGithublink(previousname.githubid)
+  //  setStatus(previousname.status)
   const handleSubmit =  (event) => {
     event.preventDefault();
     profiledata({ fullname, number, livesin, works, DOB, githublink, linkdinlink, status });
-      
+    
+    
+    dispatch(setAllusersdata({ fullname, number, livesin, works, DOB, githublink, linkdinlink, status }))
   };
   const fields = async () =>{
-    const response = await fetchProfileDetails()
-    setPreveousname(response.data)
+    const {data} = await fetchProfileDetails()
+    console.log(data,"data")
+    if(data)
+    { setPreveousname(data)
+  
+    dispatch(setAllusersdata({ fullname:data.name, number:data.number, livesin:data.Livesin, works:data.workat, DOB:data.dob, githublink:data.githubid, linkdinlink:data.linkdinid, status:data.status }))
+    }
   }
+
   useEffect(() =>{
     fields()
   },[])
-  const validationSchema = Yup.object({
-    fullname: Yup.string().required('This field is Required'),
-    email: Yup.string().required('This field is Required'),
-    number: Yup.string()
-      .required('This field is Required')
-      .min(10, 'Mobile number must be 10 numbers'),
-    livesin: Yup.string().required('Wrong password').min(6, 'password atleaste 6 numbers'),
-    works: Yup.string().required('This field is required'),
-    status: Yup.string().required('This field is required')
-  });
-  validationSchema
+
 
   console.log(previousname,"kinking")
   return (  

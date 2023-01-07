@@ -21,11 +21,10 @@ export const profiledata = async (data) => {
   return await Instance.post('/profileextradata',{data})
 }
 export const profilephoto = async (body) =>{
-  console.log(body,"sjjksdfjkdfjkdf")
+ 
   return await Instance.post('/profilephoto', {body})
 }
 export const coverphoto = async (body) =>{
-  console.log(body,"sjjksdfjkdfjkdf")
   return await Instance.post('/coverphoto', {body})
 }
 export const fetchProfileDetails = async ()=>{
@@ -63,3 +62,8 @@ export const logineduser = async ()=>{
 export const getUser = async (id)=>{
   return await Instance.get(`/getUserdata/${id}`)
 }
+export const searchengine = async (body) =>{
+  return await Instance.put('/Searchengine',{body})
+}
+
+

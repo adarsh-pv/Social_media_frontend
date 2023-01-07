@@ -10,6 +10,7 @@ import { UilBookmark } from '@iconscout/react-unicons';
 // import { UilCloudBookmark } from '@iconscout/react-unicons';
 
 import { useNavigate } from 'react-router-dom';
+import ProfileCard from '../../Profileparts/ProfileCard/ProfileCard';
 // import TrendCard from "../TrendCard/TrendCard";
 // import ShareModal from "../ShareModal/ShareModal";
 const RightSide = () => {
@@ -24,9 +25,11 @@ const RightSide = () => {
          onClick={()=>navigate(`/savedpost`)}/>
         <img src={Comment} alt=""  onClick={()=>navigate('/chat')}/>
       </div>
-      <TrendCard />
+      {/* <TrendCard /> */}
+      <ProfileCard location="home"/>
 
-      <button className="button r-button">Share</button>
+
+      {/* <button className="button r-button">Share</button> */}
       {/* <ShareModal modalOpened={modalOpened} setModalOpened={setModalOpened} />   */}
     </div>
   );

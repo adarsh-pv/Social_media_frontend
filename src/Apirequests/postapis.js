@@ -23,8 +23,8 @@ export const fetchcomments=async (body) =>{
   console.log(body,"ss")
   return await Instance.post('/showcommenteduser',{body})
 }
-export const showmyposts = async ()=>{
-  return await Instance.get('/showmyposts')
+export const showmyposts = async (id)=>{
+  return await Instance.post('/showmyposts',{id})
 }
 export const savedposts = async (id) =>{
   console.log(id,"id")
@@ -33,5 +33,18 @@ export const savedposts = async (id) =>{
 export const fetchsaveditems = async () =>{
   return await Instance.get('/fetchsaveditems')
 }
-
-
+export const deleteposts = async (postid) =>{
+  return await Instance.post('/deletepost',{postid})
+}
+export const sharepost = async (postid) =>{
+  return await Instance.post('/sharepost',{postid})
+}
+export const report = async (postid) =>{
+  return await Instance.patch('/reportpost',{postid})
+}
+export const fetchreportedposts= async () =>{
+  return await Instance.get('/fetchreportedposts')
+}
+export const postdelete = async (postid) =>{
+  return await Instance.post('/postdelete',{postid})
+}

@@ -6,8 +6,11 @@ import './InfoCard.css';
 import { UilPen } from '@iconscout/react-unicons';
 import ProfileModel from '../Profilemodel/profilemodel';
 import AllUsers from '../Allusers/AllUsers';
+import { useSelector } from 'react-redux';
 const InfoCard = () => {
   const [modalOpened, setModalOpened] = useState(false);
+  const {USER} = useSelector((state) =>state.userReducer)
+  console.log(USER,"kkk>>>>>>>>>>>>>>k")
   return (
     <div className="InfoCard">
       <div className="InfoHead">
@@ -19,22 +22,22 @@ const InfoCard = () => {
       </div>
       <div className="Info">
         <span>
-          <b>Status </b>
+          <b>D.O.B</b>
         </span>
-        <span>In Relationship</span>
+        <span>{USER.DOB}</span>
       </div>
 
       <div className="Info">
         <span>
           <b>Lives in </b>
         </span>
-        <span>kerala</span>
+        <span> {USER.livesin}</span>
       </div>
       <div className="Info">
         <span>
           <b>Work At </b>
         </span>
-        <span>Infosys pvt ltd</span>
+        <span> {USER.works}</span>
       </div>
 
       <button className="button logout-button">Logout</button>

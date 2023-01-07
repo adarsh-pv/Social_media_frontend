@@ -1,0 +1,7 @@
+.adminHome{
+    position: relative;
+    display: grid;
+    padding: 10px;
+    grid-template-columns: 18rem auto 20rem;
+    gap:1rem;
+}

@@ -19,9 +19,7 @@ const AllUsers = () => {
   const [allusers,setAlluser] = useState([])
 
   const fetchallusers = async () =>{
-    console.log(" haiaaiiiiiiiiiii")
     const response = await fetchusers()
-    console.log(response,"allusers can be listed")
    if(response.data)  setAlluser(response.data)
   }
   const following = async () =>{

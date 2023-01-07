@@ -10,6 +10,9 @@ import PrivateRoute from './PrivateRoutes';
 import Allusers from '../Pages/Allusers';
 import Savedposts from '../Pages/Savedpost';
 import Chat from '../Pages/Chat';
+import View from '../component/Feed/view/view';
+import Adminlogin from '../Pages/Adminlogin';
+import AdminHome from '../Pages/AdminHome';
 
 export default function Routers() {
   return (
@@ -37,6 +40,14 @@ export default function Routers() {
             </PrivateRoute>
           }></Route>
         {/* <Route path='/home' element={<Home />}></Route> */}
+        <Route
+          path="/profile" 
+          
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }></Route>
         <Route
           path="/profile/:id" 
           
@@ -67,6 +78,30 @@ export default function Routers() {
           <PrivateRoute>
             <Chat/>
           </PrivateRoute>
+          }
+          ></Route>
+           <Route
+          path='/post/:id'
+          element={
+          <PrivateRoute>
+            <View/>
+          </PrivateRoute>
+          }
+          ></Route>
+          <Route
+          path='/admin'
+          element={
+          // <PublicRoutes>
+            <Adminlogin/>
+          // </PublicRoutes>
+          }
+          ></Route>
+          <Route
+          path='/admin/home'
+          element={
+          <PublicRoutes>
+            <AdminHome/>
+          </PublicRoutes>
           }
           ></Route>
       </Routes>

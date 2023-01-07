@@ -8,7 +8,7 @@ import { useNavigate, useParams} from 'react-router-dom'
 // useEffect(()=>{
 //     User
 // },[])
-const User = ({ user }) => {
+const User = ({ user ,location }) => {
     
     const [profile, setProfile] = useState('');
     const [followbutton, setButton] = useState(false);
@@ -43,7 +43,7 @@ console.log(profile,"pop")
         </div>
       </div>
 
-      {followbutton.following ? (
+      {location == 'chat' ? '' :followbutton.following ? (
           <button
           className="button fc-button"
           onClick={(e) => {
