@@ -5,6 +5,7 @@ import { Modal, TableBody, TableCell, TableContainer, Paper , TableHead, TableRo
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { object } from 'yup';
 import { fetchreportedposts, postdelete } from '../../../Apirequests/postapis';
 const style = {
@@ -26,10 +27,12 @@ const PostTable = () => {
   const [post,setPost] = useState({})
   const reportedPosts = async () =>{
     const {data}= await fetchreportedposts()
+    console.log("daatthhjhkkjkjk",data)
     setPosts(data)
   }
   const deletePost = async (id)=>{
     const {data} = await postdelete(id)
+    console.log(data,"loo")
     const response = posts.filter((post)=> post._id !== id)
     setPosts(response)
  }
@@ -42,6 +45,7 @@ const PostTable = () => {
         setPost(post)
          setOpen(true)}
       const handleClose = () => setOpen(false);
+  const {searchResult} = useSelector((state) =>state.userReducer)
     
     console.log(open)
   return (

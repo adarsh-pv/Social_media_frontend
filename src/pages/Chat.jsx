@@ -68,7 +68,7 @@ return (
     <div>
     <div className='Chat'>
       <div className='Left-Side-Chat'>
-        <LogoSearch/>
+        <LogoSearch />
         <div className='Chat-container'>
 
         <FollowersCard location='chat'/>

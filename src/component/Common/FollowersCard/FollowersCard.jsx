@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux';
 // import unknownuser from '../../../img/unknown.png';
 // import ProfileCard from '../../Profileparts/ProfileCard/ProfileCard';
 const FollowersCard = ({location}) => {
-
+  
 const [followbutton, setButton] = useState(false);
 const {peoples} = useSelector((state) =>state.userReducer)
 

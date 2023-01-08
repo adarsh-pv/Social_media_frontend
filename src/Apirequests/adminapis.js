@@ -1,23 +1,45 @@
 /* eslint-disable prettier/prettier */
 import axios from 'axios';
-import cookie from 'universal-cookie';
-const Cookie = new cookie();
-const token = Cookie.get('token');
+
+
+const admintoken = localStorage.getItem('adminToken')
 
 const api = 'http://localhost:4000';
-const Instance = axios.create({ baseURL: api, timeout: 5000, headers: { token } });
+const Instance = axios.create({ baseURL: api, timeout: 5000, headers: { admintoken } });
 export const adminlogin = async (body) => {
-  return await Instance.post('/admin', { body });
+  try{
+    return await Instance.post('/admin', { body });
+  }catch(error){
+    console.log(error)
+  }
 };
 export const findallusers = async (page) =>{
+  try{
     return await Instance.put(`admin/findusers?page=${page}`)
+  }catch(error){
+    console.log(error)
+  }
 }
 export const Block = async (id) =>{
-  console.log(id)
-  return await Instance.patch('admin/blockUser',{id})
+  try{
+    return await Instance.patch('admin/blockUser',{id})
+  }catch(error){
+    console.log(error)
+  }
 }
 export const searchdata = async (body)=>{
-  console.log("first",body)
-  return await Instance.put('admin/Searchbar',{body})
+  try{
+    return await Instance.put('admin/Searchbar',{body})
+  }catch(error){
+    console.log(error)
+  }
+}
+export const verifyAdmin = async () =>{
+  try{
+    return await Instance.get("/admin/verify")
+  }catch(error){
+    console.log(error)
+    return undefined;
+  }
 }
 

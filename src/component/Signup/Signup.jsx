@@ -9,7 +9,10 @@ import { requestsapi } from '../../Apirequests/authapis';
 import Logo from '../../img/logo.png';
 import jwt_decode from 'jwt-decode';
 import { Link } from 'react-router-dom';
+import { Toaster,toast } from 'react-hot-toast';
+import { useState } from 'react';
 const SignUp = () => {
+  const [error,setError] = useState(null)
   function handleCallbackResponse(response) {
     console.log('Encoded JWT ID token: ' + response.credential);
     let userObject = jwt_decode(response.credential);
@@ -59,6 +62,11 @@ const SignUp = () => {
     validationSchema
   });
 
+
+  
+  // toast.error({formik.touched.number && formik.errors.number})
+  
+  //  setError(formik.touched.number && formik.errors.number)
   return (
     <div className="App">
       <div className="blur" style={{ top: '-18%', right: '0' }}></div>
@@ -76,71 +84,81 @@ const SignUp = () => {
       </div>
     </div>
   );
-
+  
   function Sign() {
     return (
       <div className="a-right">
+<Toaster/>
+
         <form className="infoForm loginForm" onSubmit={formik.handleSubmit}>
           <h3>Signup</h3>
-          <div>
+          <div >
             <input
               type="text"
-              autoFocus="autofocus"
+              // autoFocus="autofocus"
               onChange={formik.handleChange}
               value={formik.values.name}
               placeholder="Full name"
               className="infoInput"
               name="name"
-            />
-            <label className="validat">{formik.touched.name && formik.errors.name}</label>
-
+              />
+             
+           <label className="validat">{formik.touched.name && formik.errors.name}</label>
+          {/* {  toast.error(formik.touched.name && formik.errors.name) } */}
+           
+            
             <input
-              type="text"
-              autoFocus="autofocus"
+              type="email"
               onChange={formik.handleChange}
               value={formik.values.email}
               placeholder="Email address"
               className="infoInput"
               name="email"
-            />
+              />
             <span className="validat">{formik.touched.email && formik.errors.email}</span>
+          {/* {  toast.error(formik.touched.email && formik.errors.email) } */}
+
           </div>
 
           <div>
             <input
               type="number"
-              autoFocus
               onChange={formik.handleChange}
               value={formik.values.number}
               className="infoInput"
               placeholder="PH Number"
               name="number"
-            />
+              />
             <span className="validat">{formik.touched.number && formik.errors.number}</span>
+          {/* {  toast.error(formik.touched.number && formik.errors.number) } */}
+        
+          
           </div>
           <div>
             <input
               type="password"
-              autoFocus
               onChange={formik.handleChange}
               value={formik.values.password}
               className="infoInput"
               placeholder="password"
               name="password"
-            />
+              />
             <span className="validat">{formik.touched.password && formik.errors.password}</span>
-
+            {
+            // toast.error(formik.touched.password && formik.errors.password) 
+            }
             <input
               type="password"
-              autoFocus
               onChange={formik.handleChange}
               value={formik.values.conpassword}
               className="infoInput"
               placeholder="Confirm pssword"
               name="conpassword"
-            />
+              />
             <span className="validate">
               {formik.touched.conpassword && formik.errors.conpassword}
+              {/* {toast.error(formik.touched.conpassword && formik.errors.conpassword) } */}
+
             </span>
           </div>
           <div>

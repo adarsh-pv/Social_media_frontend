@@ -1,17 +1,16 @@
 /* eslint-disable prettier/prettier */
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-
 import React from 'react';
 import { toast, Toaster } from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setUserid } from '../../Store/authSlice';
+import Cookies from 'universal-cookie';
 import Logo from '../../img/logo.png';
 import { adminlogin } from '../../Apirequests/adminapis';
 
 const Adminlogin = () => {
     const Navigate = useNavigate();
+    const cookie = new Cookies()
     const validationSchema = Yup.object({
       email: Yup.string().required('Required'),
       password: Yup.string().required('Required').min(6, 'password atleaste 6 numbers')
@@ -23,10 +22,16 @@ const Adminlogin = () => {
       },
       onSubmit: async (values) => {
         console.log('onsubmit', values);
-        let response = await adminlogin(values);
-        console.log(response)
-      
-        if(response.data.maessage === "Invalid password" ){
+        let {data} = await adminlogin(values);
+        console.log(data)
+        if (data.token) {
+          localStorage.setItem("adminToken",data.token)
+          console.log(data.token,"dlkd")
+          cookie.set('AdminToken',data.token)
+          Navigate('/admin/home');
+         
+        }
+        if(data.message === "Invalid password" ){
           toast.error( "Invalid password",{
             icon: ' 🔕 ',
           style: {
@@ -36,7 +41,7 @@ const Adminlogin = () => {
           }
         })
         }
-        if(response.data.message === "User not found"){
+        if(data.message === "User not found"){
           toast.error( "User not found",{
             icon: ' 🚷 ',
           style: {
@@ -47,17 +52,11 @@ const Adminlogin = () => {
         })
         }
         
-        if (response.data.token) {
-          console.log(response)
-          // <Navigate to="/home" replace={true} />;
-          const Cookie = new Cookie();
-          localStorage.setItem('Admintoken', response.data.token)
-          Cookie.set('Admintoken', response.data.token);
-    
-        }
+     
       },
       validationSchema
     });
+   
   return(
     <div className="App">
     <Toaster/>

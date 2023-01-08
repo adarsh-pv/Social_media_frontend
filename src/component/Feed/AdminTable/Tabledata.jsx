@@ -55,7 +55,10 @@ export const Tabledata = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {searchResult?.length == 0 ? clients.map((client)=>{
+         
+          {searchResult?.length == 0 ?
+          clients.length ===0 ? <h1>No user</h1> :
+           clients.map((client)=>{
    return(
           <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
             <TableCell component="th" scope="row">

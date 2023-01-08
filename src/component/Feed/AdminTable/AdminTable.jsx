@@ -11,7 +11,7 @@ import {Tabledata} from './Tabledata'
 
 
 
-const AdminTable = ({select}) => {
+const   AdminTable = ({select}) => {
 
 useEffect(() => {
 }, [select])
@@ -19,7 +19,7 @@ useEffect(() => {
 
   return( 
     <div>
-      <Searchbar/>
+      <Searchbar select={select}/>
 
       {select == 'users' ?<Tabledata/> : ''}
 

@@ -8,17 +8,30 @@ const api = 'http://localhost:4000';
 const Instance = axios.create({ baseURL: api, timeout: 5000, headers: { token } });
 
 export const createchat = async (id) =>{
-  return await Instance.post('/chat/Createchat',{id})
+  console.log(id,"cheeeeeeee")
+  try{
+    return await Instance.post('/chat/Createchat',{id})
+  }catch(error){
+    console.log(error)
+  }
 }
 export const userChats = async (id) => {
-  console.log(id,"idddddddddddddd")
-  return await Instance.get(`/chat/Createchat/${id}`);
-};
+  try{
+    return await Instance.get(`/chat/Createchat/${id}`);
+  }catch(error){
+    console.log(error)
+  }};
 export const getMessages = async (ChatId) =>{
-  console.log(ChatId,"we")
+  try{
     return await Instance.get(`/message/${ChatId}`)
+  }catch(error){
+    console.log(error)
+  }
 }
 export const addMessage = async (data) =>{
-  console.log(data,"llol")
-  return await Instance.post('/message',{data})
+  try{
+    return await Instance.post('/message',{data})
+  }catch(error){
+    console.log(error)
+  }
 }

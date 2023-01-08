@@ -14,6 +14,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 // import { useState } from 'react'
 const PostShare = () => {
+
   const [text, setText] = useState('');
   const [image, setImg] = useState(null);
   const imageRef = useRef();
@@ -30,9 +31,7 @@ const PostShare = () => {
   };
   const navigate = useNavigate();
   const uploadImage = (files) => {
-    console.log(files, 'mb');
     files.preventDefault();
-    console.log(files[0], 's');
     if (imageSelected) {
       const formData = new FormData();
       const textData = new FormData();
@@ -40,7 +39,7 @@ const PostShare = () => {
       formData.append('file', imageSelected);
       textData.append('text', text);
       formData.append('upload_preset', 'post_cloud');
-
+    
       axios
         .post('https://api.cloudinary.com/v1_1/dufx7jvrn/image/upload', formData)
         .then((response) => {
@@ -50,7 +49,6 @@ const PostShare = () => {
     } else {
       createpost({ caption: text });
     }
-
     // createpost(text)
   };
 

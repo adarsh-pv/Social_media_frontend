@@ -4,12 +4,19 @@ import React, { useEffect, useState } from 'react';
 import { follow, userProfile } from '../../../Apirequests/authapis';
 import unknownuser from '../../../img/unknown.png';
 import { useNavigate, useParams} from 'react-router-dom'
+import { createchat } from '../../../Apirequests/chatapis';
 
 // useEffect(()=>{
 //     User
 // },[])
 const User = ({ user ,location }) => {
-    
+  const chating = async (id) =>{
+    const response =await createchat(id)
+    if(response.status === 200 ){
+   navigate('/chat')
+
+    }
+  }
     const [profile, setProfile] = useState('');
     const [followbutton, setButton] = useState(false);
     const userProfiles = async (body) => {
@@ -31,12 +38,17 @@ console.log(profile,"pop")
       
       <div className="follower">
       <div>
-        <img
+        {location == 'chat' ? <img
+          onClick={() =>chating(user._id)}
+          src={user.profileimage ? user.profileimage : unknownuser}
+          alt=""
+          className="followerImg"
+          />: <img
           onClick={() =>navigate(`/profile/${user._id}`)}
           src={user.profileimage ? user.profileimage : unknownuser}
           alt=""
           className="followerImg"
-          />
+          />}
         <div className="name">
           <span>{user.name} </span>
           <span>{user.email}</span>

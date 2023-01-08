@@ -7,6 +7,7 @@ export const userSlice = createSlice({
     peoples: [],
     searchResult: [],
  USER: {
+  profileimage:'',
     fullname:'',
     email:'',
     number:'',

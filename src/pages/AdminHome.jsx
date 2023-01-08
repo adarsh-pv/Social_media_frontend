@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import Adminhomes from '../component/Feed/Adminhome/Adminhomes';
-import AdminLeftSide from '../component/Feed/AdminLeftSide/AdminLeftSide';
+
 const AdminHome = () => {
   return (
     <div className="App">
@@ -9,7 +9,7 @@ const AdminHome = () => {
       <div className="blur" style={{ top: '36%', left: '-8rem' }}></div>
       <div>
         <Adminhomes />
-    {/* <AdminLeftSide/> */}
+  
 
       </div>
     </div>

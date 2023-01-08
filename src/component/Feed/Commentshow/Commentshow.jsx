@@ -16,7 +16,6 @@ function Commentshow({ post }) {
   const [commets, setComments] = useState([]);
   const fetchCommets = async () => {
     const response = await fetchcomments(post);
-    console.log(response, 'resspoww');
     setComments(response.data);
   };
   useEffect(() => {

@@ -27,19 +27,9 @@ function ProfileModel({ modalOpened, setModalOpened }) {
   const [linkdinlink, setLinkdinlik] = useState('');
   const [status, setStatus] = useState('');
   const [previousname,setPreveousname] = useState('')
-
-  //  setfullname(previousname.name)
-  //  setNumber(previousname.number)
-  //  setLinkdinlik(previousname.linkdinid)
-  //  setDOB(previousname.dob)
-  //  setWorks(previousname.workat)
-  //  setGithublink(previousname.githubid)
-  //  setStatus(previousname.status)
   const handleSubmit =  (event) => {
     event.preventDefault();
     profiledata({ fullname, number, livesin, works, DOB, githublink, linkdinlink, status });
-    
-    
     dispatch(setAllusersdata({ fullname, number, livesin, works, DOB, githublink, linkdinlink, status }))
   };
   const fields = async () =>{

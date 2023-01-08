@@ -8,12 +8,14 @@ import { searchengine } from '../../../Apirequests/authapis';
 import { useDispatch } from 'react-redux';
 import { setSearchresult } from '../../../Store/usersSlice';
 import { searchdata } from '../../../Apirequests/adminapis';
-const Searchbar = () => {
+import { postSearch } from '../../../Apirequests/postapis';
+const Searchbar = ({select}) => {
+  console.log(select,"location")
   const dispatch =useDispatch()
     const[search,setSearch] = useState(null)
     console.log(search)
     const handleSubmit = async()=>{
-        const response = await searchdata(search)
+        const response = await  searchdata(search) 
         console.log(response,"search")
     dispatch(setSearchresult(response.data))
     }

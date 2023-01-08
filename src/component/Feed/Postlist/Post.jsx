@@ -16,18 +16,24 @@ const Postlist = ({ data,post }) => {
   const [posts, setPosts] = useState([]);
   const [profilepost,setProfilepost] = useState([])
   const [savedpost,setSavedpost] = useState([])
+
   const allposts = async () => {
     const response = await fetchposts();
     setPosts(response.data);
   };
   const fetchsavedpost = async () =>{
+
+
     const response = await fetchsaveditems()
+
     setSavedpost(response.data)
    }
   const {id} = useParams()
 
   const showmypost= async ()=>{
+
     const response = await showmyposts(id)
+   
     setProfilepost(response.data)
   }
 

@@ -7,63 +7,119 @@ const token = Cookie.get('token');
 const api = 'http://localhost:4000';
 const Instance = axios.create({ baseURL: api, timeout: 5000, headers: { token } });
 export const requestsapi = async (body) => {
-  body.number = parseInt(body.number);
-  await Instance.post('/register', { body });
+  try{
+    body.number = parseInt(body.number);
+    await Instance.post('/register', { body });
+  }catch(error){
+    console.log(error)
+  }
 };
 export const loginapi = async (body) => {
-  return await Instance.post('login', { body });
+  try{
+    return await Instance.post('login', { body });
+  }catch(error){
+    console.log(error)
+  }
 };
 
 export const verifyuser = async () => {
-  return await Instance.get('/verify');
+  try{
+    return await Instance.get('/verify');
+  }catch(error){
+    console.log(error)
+  }
 };
 export const profiledata = async (data) => {
-  return await Instance.post('/profileextradata',{data})
+  try{
+    return await Instance.post('/profileextradata',{data})
+  }catch(error){
+    console.log(error)
+  }
 }
 export const profilephoto = async (body) =>{
+  try{
+    return await Instance.post('/profilephoto', {body})
+  }catch(error){
+    console.log(error)
+  }
  
-  return await Instance.post('/profilephoto', {body})
 }
 export const coverphoto = async (body) =>{
-  return await Instance.post('/coverphoto', {body})
+  try{
+    return await Instance.post('/coverphoto', {body})
+  }catch(error){
+    console.log(error)
+  }
 }
 export const fetchProfileDetails = async ()=>{
-  return await Instance.get('/profileDetails')
+  try{
+    return await Instance.get('/profileDetails')
+  }catch(error){
+    console.log(error)
+  }
 }
 export const fetchUsers = async () =>{
-  console.log("first")
-  return await Instance.get('/allusers')
+  try{
+    return await Instance.get('/allusers')
+  }catch(error){
+    console.log(error)
+  }
 }
 export const follow = async (body) =>{
-  return await Instance.post('/follow',{body})
+  try{
+    return await Instance.post('/follow',{body})
+  }catch(error){
+    console.log(error)
+  }
 }
 export const userProfile = async (body) =>{
-  console.log(body,"rtrt")
-  return await Instance.post('/userprofile',{body})
+  try{
+    return await Instance.post('/userprofile',{body})
+  }catch(error){
+    console.log(error)
+  }
 }
-// export const savedposts=async (body)=>{
-//   console.log(body,"cjd")
-//   return await Instance.post('/savedposts',{body})
-// }
 export const fetchusers= async () =>{
-  console.log("kkkkkh")
-  return await Instance.get('/fetchallusers')
+  try{
+    return await Instance.get('/fetchallusers')
+  }catch(error){
+    console.log(error)
+  }
 }
 export const followingusers = async ()=>{
-  console.log("fddddddd")
-  return await Instance.get('/followingusers')
+  try{
+    return await Instance.get('/followingusers')
+  }catch(error){
+    console.log(error)
+  }
 }
 export const follwersusers = async ()=>{
-  return await Instance.get('/followersusers')
+  try{
+    return await Instance.get('/followersusers')
+  }catch(error){
+    console.log(error)
+  }
 }
 export const logineduser = async ()=>{
-  return await Instance.get('/logineduser')
+  try{
+    return await Instance.get('/logineduser')
+  }catch(error){
+    console.log(error)
+  }
 }
 export const getUser = async (id)=>{
-  return await Instance.get(`/getUserdata/${id}`)
+  try{
+    return await Instance.get(`/getUserdata/${id}`)
+  }catch(error){
+    console.log(error)
+  }
 }
 export const searchengine = async (body) =>{
-  return await Instance.put('/Searchengine',{body})
+  try{
+    return await Instance.put('/Searchengine',{body})
+  }catch(error){
+    console.log(error)
+  }
 }
 
 

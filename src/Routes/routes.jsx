@@ -13,6 +13,7 @@ import Chat from '../Pages/Chat';
 import View from '../component/Feed/view/view';
 import Adminlogin from '../Pages/Adminlogin';
 import AdminHome from '../Pages/AdminHome';
+import AdminRoute from './AdminProtuctRouter';
 
 export default function Routers() {
   return (
@@ -91,17 +92,15 @@ export default function Routers() {
           <Route
           path='/admin'
           element={
-          // <PublicRoutes>
             <Adminlogin/>
-          // </PublicRoutes>
           }
           ></Route>
           <Route
           path='/admin/home'
           element={
-          <PublicRoutes>
+          <AdminRoute>
             <AdminHome/>
-          </PublicRoutes>
+          </AdminRoute>
           }
           ></Route>
       </Routes>
