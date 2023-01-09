@@ -5,14 +5,10 @@ import Home from '../../../img/home.png'
 
 import Comment from '../../../img/comment.png';
 import { UilUser } from '@iconscout/react-unicons';
-import TrendCard from '../TrendCard/TrendCard';
 import { UilBookmark } from '@iconscout/react-unicons';
-// import { UilCloudBookmark } from '@iconscout/react-unicons';
-
 import { useNavigate } from 'react-router-dom';
 import ProfileCard from '../../Profileparts/ProfileCard/ProfileCard';
-// import TrendCard from "../TrendCard/TrendCard";
-// import ShareModal from "../ShareModal/ShareModal";
+
 const RightSide = () => {
   const navigate = useNavigate('')
   return (

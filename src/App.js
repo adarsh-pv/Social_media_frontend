@@ -4,6 +4,7 @@ import Routers from './Routes/routes';
 import store from './Store';
 
 function App() {
+  console.log(process.env.REACT_APP_One);
   return (
     <div className="App">
       <Provider store={store}>

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable no-undef */
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
@@ -19,7 +20,7 @@ const InfoCard = () => {
   const logount = () =>{
     const cookies = new Cookies()
     cookies.remove('token')
-    Navigate('/login')
+    Navigate('/')
   } 
   return (
     <div className="InfoCard">
@@ -50,7 +51,7 @@ const InfoCard = () => {
        {USER.work ? <span> {USER.works}</span> : <span>------</span>}
       </div>
 
-      <button className="button logout-button" onClick={()=>logount}>Logout</button>
+      <button className="button logout-button" onClick={()=>logount()}>Logout</button>
     </div>
   );
 };

@@ -9,10 +9,8 @@ import { requestsapi } from '../../Apirequests/authapis';
 import Logo from '../../img/logo.png';
 import jwt_decode from 'jwt-decode';
 import { Link } from 'react-router-dom';
-import { Toaster,toast } from 'react-hot-toast';
-import { useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 const SignUp = () => {
-  const [error,setError] = useState(null)
   function handleCallbackResponse(response) {
     console.log('Encoded JWT ID token: ' + response.credential);
     let userObject = jwt_decode(response.credential);
@@ -62,11 +60,6 @@ const SignUp = () => {
     validationSchema
   });
 
-
-  
-  // toast.error({formik.touched.number && formik.errors.number})
-  
-  //  setError(formik.touched.number && formik.errors.number)
   return (
     <div className="App">
       <div className="blur" style={{ top: '-18%', right: '0' }}></div>

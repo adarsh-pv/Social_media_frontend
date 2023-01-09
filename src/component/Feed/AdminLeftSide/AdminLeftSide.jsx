@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
 import React from 'react'
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import ImageIcon from '@mui/icons-material/Image';
 import { UilUser } from '@iconscout/react-unicons';
 import { useNavigate } from 'react-router-dom';
-
-import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 import { List } from '@mantine/core';
 import { ListItem, ListItemText } from '@mui/material';
 

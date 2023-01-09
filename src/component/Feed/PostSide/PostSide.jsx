@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
 import React from 'react';
 // import Posts from '../Posts/Posts';
 import PostShare from '../../Common/PostShare/PostShare';

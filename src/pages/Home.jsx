@@ -16,7 +16,6 @@ function Homepage() {
         <Profileside/>
         <PostSide location='home' />
         <RightSide />
-
       </div>
     </div>
   );

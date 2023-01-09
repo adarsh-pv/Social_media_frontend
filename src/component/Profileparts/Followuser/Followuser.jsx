@@ -5,7 +5,7 @@ import { CardActionArea, CardContent, CardMedia, Typography } from '@mui/materia
 import unknownuser from '../../../img/unknown.png';
 import { Card } from '@mantine/core';
 import { follow } from '../../../Apirequests/authapis';
-import { Navigate, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 // navigator
 const Followuser = ({user}) => {
   const [followbutton, setButton] = useState('');

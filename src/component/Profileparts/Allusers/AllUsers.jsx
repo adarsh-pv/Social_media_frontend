@@ -1,16 +1,16 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react/jsx-key */
 /* eslint-disable prettier/prettier */
 ;
-import { Box, Button, Card, Center, Flex, Tabs } from '@mantine/core';
+import { Box,Flex, Tabs } from '@mantine/core';
 // import { CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';  
-import { red } from '@mui/material/colors';
+
 import Tab from '@mui/material/Tab';
-import { display } from '@mui/system';
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 // import { useEffect } from 'react';
-import { fetchusers, follow, followingusers, follwersusers } from '../../../Apirequests/authapis';
+import { fetchusers, followingusers, follwersusers } from '../../../Apirequests/authapis';
 
 import './alluser.css'
 import Followuser from '../Followuser/Followuser';

@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 import React, { useEffect } from 'react';
 // import { fetchsaveditems } from '../../../Apirequests/postapis';
 import RightSide from '../../Common/RightSide/RightSide';

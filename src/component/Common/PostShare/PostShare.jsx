@@ -4,16 +4,19 @@ import ProfileImage from '../../../img/profileImg.jpg';
 import './PostShare.css';
 import { UilScenery } from '@iconscout/react-unicons';
 import { UilUser } from '@iconscout/react-unicons';
-import { UilLocationPoint } from '@iconscout/react-unicons';
 import { UilSchedule } from '@iconscout/react-unicons';
 import { UilTimes } from '@iconscout/react-unicons';
 import { createpost } from '../../../Apirequests/postapis';
 import { UilBookmark } from '@iconscout/react-unicons';
+// import dotenv from'dotenv'
+// dotenv.config()
+
 
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 // import { useState } from 'react'
 const PostShare = () => {
+  console.log(prcess.env.REACT_APP_SocketURL,"ooooo")
 
   const [text, setText] = useState('');
   const [image, setImg] = useState(null);
@@ -22,7 +25,6 @@ const PostShare = () => {
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
-      console.log(img);
       setImageSelected(event.target.files[0]);
       setImg({
         image: URL.createObjectURL(img)
@@ -35,7 +37,6 @@ const PostShare = () => {
     if (imageSelected) {
       const formData = new FormData();
       const textData = new FormData();
-      console.log('dddd', imageSelected);
       formData.append('file', imageSelected);
       textData.append('text', text);
       formData.append('upload_preset', 'post_cloud');
@@ -45,6 +46,7 @@ const PostShare = () => {
         .then((response) => {
           createpost({ image: response.data.secure_url, caption: text });
           // console.log(response.data.secure_url,"hia")
+          
         });
     } else {
       createpost({ caption: text });
@@ -91,9 +93,6 @@ const PostShare = () => {
               name="myimage"
               onChange={onImageChange}
               ref={imageRef}
-              // onChange={(event) => {
-              // setImageSelected(event.target.files[0])
-              // }}
             />
           </div>
         </div>

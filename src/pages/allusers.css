@@ -5,3 +5,19 @@
     grid-template-columns: 18rem auto 20rem;
     gap:1rem;
 }
+@media only screen and (max-width: 1250px){
+    .allusers{
+        grid-template-columns: 25rem auto;
+    }
+    .rightSide{
+        display: none;
+    }
+}
+@media only screen and (max-width:900px){ 
+    .allusers{
+        grid-template-columns: auto;
+    }
+    .followersCard{ 
+        display: none;
+    }
+}

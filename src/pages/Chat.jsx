@@ -70,12 +70,10 @@ return (
       <div className='Left-Side-Chat'>
         <LogoSearch />
         <div className='Chat-container'>
-
         <FollowersCard location='chat'/>
         <h2>Chats</h2>
       <div className='Chat-list'>
         {chats.map((chat)=>{
-    console.log(chat,"useuseuseuse")
         return   (<div onClick={()=>setCurrentChat(chat)}>
              <Conversation key={chat._id} data={chat} currentUserId={userid} online={checkOnlineStatus(chat)}/> 
            </div> )

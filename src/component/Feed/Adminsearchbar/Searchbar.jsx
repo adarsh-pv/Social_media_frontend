@@ -1,14 +1,14 @@
 /* eslint-disable prettier/prettier */
-import { Divider, InputBase, Paper } from '@mantine/core';
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
+import { InputBase, Paper } from '@mantine/core';
 import React, { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import { searchengine } from '../../../Apirequests/authapis';
 import { useDispatch } from 'react-redux';
 import { setSearchresult } from '../../../Store/usersSlice';
 import { searchdata } from '../../../Apirequests/adminapis';
-import { postSearch } from '../../../Apirequests/postapis';
 const Searchbar = ({select}) => {
   console.log(select,"location")
   const dispatch =useDispatch()

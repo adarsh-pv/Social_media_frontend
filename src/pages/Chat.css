@@ -76,4 +76,7 @@
      .follower.conversation>div>.name{
       display: none;
      }
+     .rightSide{
+      display: none;
+  }
   }

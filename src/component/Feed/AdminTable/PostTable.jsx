@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 
 import { Box, Button, Table } from '@mantine/core';
 import { Modal, TableBody, TableCell, TableContainer, Paper , TableHead, TableRow, Typography } from '@mui/material';

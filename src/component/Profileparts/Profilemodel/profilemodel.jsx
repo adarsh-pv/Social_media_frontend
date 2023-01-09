@@ -1,13 +1,11 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/prop-types */
 /* eslint-disable prettier/prettier */
-import { Button, Input, Modal, useMantineTheme } from '@mantine/core';
-import axios from 'axios';
+import { Button, Modal, useMantineTheme } from '@mantine/core';
 // import { useFormik } from 'formik';
 import { useState } from 'react';
 import { fetchProfileDetails, profiledata} from '../../../Apirequests/authapis';
 import './profilemodel.css';
-import * as Yup from 'yup';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setAllusersdata } from '../../../Store/usersSlice';

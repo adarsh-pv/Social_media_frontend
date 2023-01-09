@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { follow, userProfile } from '../../../Apirequests/authapis';
@@ -6,9 +8,6 @@ import unknownuser from '../../../img/unknown.png';
 import { useNavigate, useParams} from 'react-router-dom'
 import { createchat } from '../../../Apirequests/chatapis';
 
-// useEffect(()=>{
-//     User
-// },[])
 const User = ({ user ,location }) => {
   const chating = async (id) =>{
     const response =await createchat(id)
@@ -74,8 +73,6 @@ console.log(profile,"pop")
           unfollow
         </button>
       )}
-      {/* <ProfileCard profile={profile}/> */}
-      {/* <button className="button fc-button" onClick={()=>follows(user._id)}>unfollow</button> */}
     </div>
   );
 };
