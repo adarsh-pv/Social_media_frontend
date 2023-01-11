@@ -22,7 +22,7 @@ import './Post.css';
 import { Menu, MenuItem } from '@mui/material';
 import Circles from 'react-loading-icons/dist/esm/components/circles';
 
-function Post({ post, allposts }) {
+function Post({ post, allpost, actions }) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [commentOpen, setCommentOpen] = useState(false);
@@ -30,7 +30,8 @@ function Post({ post, allposts }) {
   const [open, setOpen] = useState(false);
   const handlePostLike = async (id) => {
     const res = await likepost(id);
-    allposts();
+    // allpost();
+    actions();
   };
   const handleClick = (event) => {
     setOpen(true);
@@ -60,7 +61,7 @@ function Post({ post, allposts }) {
     setTimeout(() => {
       setIsLoading(false);
     }, 2000);
-    allposts();
+    actions();
   };
   const savedpost = async (id) => {
     setIsLoading(true);
@@ -81,7 +82,7 @@ function Post({ post, allposts }) {
     setTimeout(() => {
       setIsLoading(false);
     }, 2000);
-    allposts();
+    allpost();
   };
   const reportpost = async (postid) => {
     const reports = await report(postid);
@@ -95,7 +96,7 @@ function Post({ post, allposts }) {
         }
       });
     }
-    allposts();
+    allpost();
   };
   const ids = post._id;
   return (
@@ -169,7 +170,7 @@ function Post({ post, allposts }) {
             <div>
               <RWebShare
                 data={{
-                  url: `http://localhost:3000/post/${ids}`
+                  url: `https://socialmedia-370608.web.app/post/${ids}`
                   // url:(`http://localhost:3000/post/63ac340e2ae367a71e444154`)
                   // `)
                 }}>

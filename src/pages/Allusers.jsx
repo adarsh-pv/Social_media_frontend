@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import '../App.css';
-import AllUsers from '../component/Profileparts/Allusers/AllUsers';
-import Profileside from '../component/Profileparts/ProfileSide/profileside';
+import AllUsers from '../component/ProfileData/Allusers/AllUsers';
+import Profileside from '../component/ProfileData/ProfileSide/profileside';
 import RightSide from '../component/Common/RightSide/RightSide';
 
 import './allusers.css'

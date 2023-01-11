@@ -1,14 +1,15 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable no-undef */
+/* eslint-disable prettier/prettier */
 import axios from 'axios';
 import cookie from 'universal-cookie';
 const Cookie = new cookie();
 const token = Cookie.get('token');
 
-const api = 'http://localhost:4000';
+const api = process.env.REACT_APP_MainURL;
 const Instance = axios.create({ baseURL: api, timeout: 5000, headers: { token } });
 
 export const createchat = async (id) =>{
-  console.log(id,"cheeeeeeee")
   try{
     return await Instance.post('/chat/Createchat',{id})
   }catch(error){

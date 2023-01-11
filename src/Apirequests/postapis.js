@@ -1,10 +1,12 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable no-undef */
+/* eslint-disable prettier/prettier */
 import axios from 'axios';
 import cookie from 'universal-cookie';
 const Cookie = new cookie();
 const token = Cookie.get('token');
  const admintoken = localStorage.getItem('adminToken')
-const api = 'http://localhost:4001';
+const api = process.env.REACT_APP_PostsURL;
 const Instance = axios.create({ baseURL: api, timeout: 5000, headers: { token } });
 export const adminInstance = axios.create({ baseURL: api, timeout: 3000, headers: { admintoken } });
 

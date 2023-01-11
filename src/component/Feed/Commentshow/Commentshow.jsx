@@ -12,7 +12,6 @@ import { useEffect } from 'react';
 import { commentpost, fetchcomments } from '../../../Apirequests/postapis';
 
 function Commentshow({ post }) {
-  console.log(post, 'postissssssssss');
   const [commets, setComments] = useState([]);
   const fetchCommets = async () => {
     const response = await fetchcomments(post);

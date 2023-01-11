@@ -25,7 +25,7 @@ const SignUp = () => {
   useEffect(() => {
     /*global google*/
     google.accounts.id.initialize({
-      client_id: '96946571929-ookthag7ce6pm0ig99gog2389i42omeo.apps.googleusercontent.com',
+      client_id: process.env.REACT_APP_CLIENTID,
       callback: handleCallbackResponse
     });
 
@@ -145,6 +145,7 @@ const SignUp = () => {
               onChange={formik.handleChange}
               value={formik.values.conpassword}
               className="infoInput"
+              autoFocus 
               placeholder="Confirm pssword"
               name="conpassword"
               />

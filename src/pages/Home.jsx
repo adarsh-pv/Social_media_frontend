@@ -3,10 +3,10 @@
 /* eslint-disable prettier/prettier */
 import '../App.css';
 import './home.css';
-import Profileside from '../component/Profileparts/ProfileSide/profileside';
+import Profileside from '../component/ProfileData/ProfileSide/profileside';
 import PostSide from '../component/Feed/PostSide/PostSide';
 import RightSide from '../component/Common/RightSide/RightSide';
-import ProfileCard from '../component/Profileparts/ProfileCard/ProfileCard';
+import ProfileCard from '../component/ProfileData/ProfileCard/ProfileCard';
 function Homepage() {
   return (
     <div className="App">

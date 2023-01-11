@@ -56,7 +56,8 @@ console.log(profile,"pop")
 
       {location == 'chat' ? '' :followbutton.following ? (
           <button
-          className="button fc-button"
+          style={{width:'70px'}}
+          className="button"
           onClick={(e) => {
               e.preventDefault();
               follows(user._id);
@@ -65,7 +66,8 @@ console.log(profile,"pop")
         </button>
       ) : (
         <button
-          className="button fc-button"
+        style={{width:'70px'}}
+          className="button"
           onClick={(e) => {
             e.preventDefault();
             follows(user._id);

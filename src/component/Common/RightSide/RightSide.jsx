@@ -7,7 +7,7 @@ import Comment from '../../../img/comment.png';
 import { UilUser } from '@iconscout/react-unicons';
 import { UilBookmark } from '@iconscout/react-unicons';
 import { useNavigate } from 'react-router-dom';
-import ProfileCard from '../../Profileparts/ProfileCard/ProfileCard';
+import ProfileCard from '../../ProfileData/ProfileCard/ProfileCard';
 
 const RightSide = () => {
   const navigate = useNavigate('')

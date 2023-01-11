@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import Saved from '../component/Profileparts/Savdpost/Saveditems';
+import Saved from '../component/ProfileData/Savdpost/Saveditems';
 
 const Savedposts = () => {
   return (

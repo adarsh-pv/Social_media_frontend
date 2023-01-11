@@ -16,7 +16,7 @@ import toast,{Toaster} from 'react-hot-toast'
 import './ProfileCard.css';
 import {UilMessage} from '@iconscout/react-unicons'
 import Post from '../../Feed/Post/Post';
-import InfoCard from '../InfoCard/InfoCard';
+import InfoCard from '../../ProfileData/InfoCard/InfoCard';
 import {  useSelector } from 'react-redux';
 import { createCat, createchat, userChats } from '../../../Apirequests/chatapis';
 

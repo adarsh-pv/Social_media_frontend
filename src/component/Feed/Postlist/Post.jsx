@@ -13,16 +13,12 @@ import { useEffect } from 'react';
 // import { Commentlist } from '../comment/Comment';
 import Post from '../Post/Post';
 
-const Postlist = ({ data, post }) => {
+const Postlist = ({ data, post, allpost, action }) => {
   console.log(post, 'this is the post sider');
   const [posts, setPosts] = useState([]);
   const [profilepost, setProfilepost] = useState([]);
   const [savedpost, setSavedpost] = useState([]);
 
-  const allposts = async () => {
-    const response = await fetchposts();
-    setPosts(response.data);
-  };
   const fetchsavedpost = async () => {
     const response = await fetchsaveditems();
 
@@ -34,18 +30,20 @@ const Postlist = ({ data, post }) => {
     const response = await showmyposts(id);
 
     setProfilepost(response.data);
+    // allpost()
   };
 
   useEffect(() => {
-    allposts();
+    // allpost();
     showmypost();
     fetchsavedpost();
   }, []);
   return (
     <>
       {post === 'home'
-        ? posts.map((post) => {
-            return <Post post={post} allposts={allposts} />;
+        ? allpost.map((post) => {
+            return <Post post={post} allpost={allpost} actions={action} />;
+            // return <Post post={post}  />;
           })
         : post === 'profile'
         ? profilepost.map((post) => {

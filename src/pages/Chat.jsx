@@ -33,9 +33,9 @@ const Chat = () => {
    }
    },[sendMessage])
   useEffect(()=>{
-   socket.current = io('http://localhost:8800')
+   socket.current = io(process.env.REACT_APP_SocketURL)
    socket.current.emit("new-user-add",userid)
-   socket.current.on('get-Users', (users) =>{
+   socket.current.on('get-Users', (users) =>{                             
     setOnlineUsers(users);
   })
 },[userid])

@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import LoginPage from '../Pages/login';
-import SignupPage from '../Pages/signup';
+import LoginPage from '../Pages/Login';
+import SignupPage from '../Pages/Signup';
 import Home from '../Pages/Home';
 import PublicRoutes from './PublicRoutes';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';

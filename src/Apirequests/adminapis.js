@@ -1,10 +1,12 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable no-undef */
+/* eslint-disable prettier/prettier */
 import axios from 'axios';
 
 
 const admintoken = localStorage.getItem('adminToken')
 
-const api = 'http://localhost:4000';
+const api = process.env.REACT_APP_MainURL;
 const Instance = axios.create({ baseURL: api, timeout: 5000, headers: { admintoken } });
 export const adminlogin = async (body) => {
   try{

@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
 import React, { useState, useRef } from 'react';
 import ProfileImage from '../../../img/profileImg.jpg';
 import './PostShare.css';
@@ -15,9 +17,8 @@ import { UilBookmark } from '@iconscout/react-unicons';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 // import { useState } from 'react'
-const PostShare = () => {
-  console.log(prcess.env.REACT_APP_SocketURL,"ooooo")
-
+const PostShare = ({allpost}) => {
+  
   const [text, setText] = useState('');
   const [image, setImg] = useState(null);
   const imageRef = useRef();
@@ -39,10 +40,10 @@ const PostShare = () => {
       const textData = new FormData();
       formData.append('file', imageSelected);
       textData.append('text', text);
-      formData.append('upload_preset', 'post_cloud');
+      formData.append('upload_preset', process.env.REACT_APP_PresetName);
     
       axios
-        .post('https://api.cloudinary.com/v1_1/dufx7jvrn/image/upload', formData)
+        .post(process.env.REACT_APP_CloudURL, formData)
         .then((response) => {
           createpost({ image: response.data.secure_url, caption: text });
           // console.log(response.data.secure_url,"hia")
@@ -51,6 +52,7 @@ const PostShare = () => {
     } else {
       createpost({ caption: text });
     }
+    allpost()
     // createpost(text)
   };
 
