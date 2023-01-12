@@ -6,15 +6,17 @@ import { useFormik } from 'formik';
 import './login.css';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
-import { loginapi } from '../../Apirequests/authapis';
+import { loginapi} from '../../Apirequests/authapis';
 import cookie from 'universal-cookie';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setAuth, setName, setUserid } from '../../Store/authSlice';
 import toast,{Toaster} from 'react-hot-toast'
+import jwt_decode from 'jwt-decode';
 
 // import '../../App.css'
 import Logo from '../../img/logo.png';
+import { useEffect } from 'react';
 // import { useState } from 'react';
 
 const Login = () => {
@@ -24,13 +26,38 @@ const Login = () => {
     email: Yup.string().required('Required'),
     password: Yup.string().required('Required').min(6, 'password atleaste 6 numbers')
   });
+  function handleCallbackResponse(response) {
+    console.log('Encoded JWT ID token: ' + response.credential);
+    let userObject = jwt_decode(response.credential);
+    console.log(userObject);
+    const { email, given_name, family_name } = userObject;
+    let guser = {
+      email,
+      name: given_name + family_name 
+    };
+    loginapi(guser);
+  }
+  useEffect(() => {
+    /*global google*/
+    google.accounts.id.initialize({
+      client_id: process.env.REACT_APP_CLIENTID,
+      callback: handleCallbackResponse
+    });
+
+    google.accounts.id.renderButton(document.getElementById('signInDiv'), {
+      theme: 'outline',
+      size: 'larage'
+    });
+  }, []);
+
   const formik = useFormik({
     initialValues: {
       email: '',
       password: ''
     },
+    
     onSubmit: async (values) => {
-      console.log('onsubmit', values);
+
       let response = await loginapi(values);
     
       if(response.data.maessage === "Invalid password" ){
@@ -73,11 +100,12 @@ const Login = () => {
         dispatch(setName(response.data.name));
         dispatch(setAuth(true));
         Cookie.set('token', response.data.token);
-        Navigate('/home');
+        Navigate('/home');  
       }
     },
     validationSchema
   });
+  
   return (
     <div className="App">
 <Toaster/>  
@@ -135,6 +163,7 @@ const Login = () => {
               Login
             </button>
           </div>
+          <div id="signInDiv"></div>
         </form>
       </div>
     );

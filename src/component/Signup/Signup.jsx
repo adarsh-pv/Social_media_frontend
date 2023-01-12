@@ -8,9 +8,14 @@ import { useFormik } from 'formik';
 import { requestsapi } from '../../Apirequests/authapis';
 import Logo from '../../img/logo.png';
 import jwt_decode from 'jwt-decode';
-import { Link } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast, Toaster } from 'react-hot-toast';
+import Cookies from 'universal-cookie';
+import { useDispatch } from 'react-redux';
+import { setAuth, setName, setUserid } from '../../Store/authSlice';
 const SignUp = () => {
+  const dispatch = useDispatch()
+  const Navigate = useNavigate()
   function handleCallbackResponse(response) {
     console.log('Encoded JWT ID token: ' + response.credential);
     let userObject = jwt_decode(response.credential);
@@ -54,8 +59,27 @@ const SignUp = () => {
       conpassword: ''
     },
     onSubmit:async (values) => {
+
     const response = await  requestsapi(values);
-    console.log(response,"resss")
+    console.log(response)
+
+    if(response.data.exist === true){
+      toast.error('Your already exist',{  icon: ' 🚷 ',
+        style: {
+            width: '350px',
+            backgroundColor:'orange',
+            fontSize: '15px',}
+        })
+    }
+    if(response.status === 200 ){
+      const Cookie = new Cookies();  
+      localStorage.setItem('userid',response.data._id)
+      dispatch(setUserid(response.data._id))
+      dispatch(setName(response.data.name));
+      dispatch(setAuth(true));
+      Cookie.set('token', response.data.token);
+      Navigate('/home')
+    }
     },
     validationSchema
   });

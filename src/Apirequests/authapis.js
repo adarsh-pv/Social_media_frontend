@@ -7,18 +7,18 @@ const Cookie = new cookie();
 const token = Cookie.get('token');
 
 const api = process.env.REACT_APP_MainURL;
-const Instance = axios.create({ baseURL: api, timeout: 5000, headers: { token } });
+const Instance = axios.create({ baseURL:api, timeout: 5000, headers: { token } });
 export const requestsapi = async (body) => {
   try{
     body.number = parseInt(body.number);
-    await Instance.post('/register', { body });
+  return  await Instance.post('/register', { body });
   }catch(error){
     console.log(error)
   }
 };
 export const loginapi = async (body) => {
   try{
-    return await Instance.post('login', { body });
+    return await Instance.post('/login', { body });
   }catch(error){
     console.log(error)
   }
