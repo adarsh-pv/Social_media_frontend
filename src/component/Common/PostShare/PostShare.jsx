@@ -10,6 +10,7 @@ import { UilSchedule } from '@iconscout/react-unicons';
 import { UilTimes } from '@iconscout/react-unicons';
 import { createpost } from '../../../Apirequests/postapis';
 import { UilBookmark } from '@iconscout/react-unicons';
+import Circles from 'react-loading-icons/dist/esm/components/circles';
 // import dotenv from'dotenv'
 // dotenv.config()
 
@@ -18,7 +19,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 // import { useState } from 'react'
 const PostShare = ({allpost}) => {
-  
+  const [isLoading, setIsLoading] = useState(false);
   const [text, setText] = useState('');
   const [image, setImg] = useState(null);
   const imageRef = useRef();
@@ -33,7 +34,8 @@ const PostShare = ({allpost}) => {
     }
   };
   const navigate = useNavigate();
-  const uploadImage = (files) => {
+  const uploadImage=  (files) => {
+    setIsLoading(true); 
     files.preventDefault();
     if (imageSelected) {
       const formData = new FormData();
@@ -45,19 +47,35 @@ const PostShare = ({allpost}) => {
       axios
         .post(process.env.REACT_APP_CloudURL, formData)
         .then((response) => {
-          createpost({ image: response.data.secure_url, caption: text });
+          createpost({ image: response.data.secure_url, caption: text }).then(async()=>{
+            await  allpost()
+            setIsLoading(false);
+          })
+    // allpost()
+
           // console.log(response.data.secure_url,"hia")
           
         });
     } else {
-      createpost({ caption: text });
+      createpost({ caption: text }).then(async()=>
+      {
+
+       await allpost()
+        setIsLoading(false);
+      })
     }
-    allpost()
+
     // createpost(text)
   };
 
   return (
     <div className="PostShare">
+    {isLoading ? (
+      <div>
+          <Circles style={{ backgroundColor: 'orange',marginLeft:'auto',marginRight:'auto' }} />
+        </div> ):
+    (
+      <>
       <img src={ProfileImage} alt="" />
       <div>
         <input
@@ -105,6 +123,8 @@ const PostShare = ({allpost}) => {
           </div>
         )}
       </div>
+      </>
+      )}
     </div>
   );
 };

@@ -13,13 +13,12 @@ import { toast, Toaster } from 'react-hot-toast';
 import Cookies from 'universal-cookie';
 import { useDispatch } from 'react-redux';
 import { setAuth, setName, setUserid } from '../../Store/authSlice';
+
 const SignUp = () => {
   const dispatch = useDispatch()
   const Navigate = useNavigate()
   function handleCallbackResponse(response) {
-    console.log('Encoded JWT ID token: ' + response.credential);
     let userObject = jwt_decode(response.credential);
-    console.log(userObject);
     const { email, given_name, family_name } = userObject;
     let guser = {
       email,
@@ -39,7 +38,7 @@ const SignUp = () => {
       size: 'larage'
     });
   }, []);
-  const validationSchema = Yup.object({
+  const ValidationSchema = Yup.object({
     name: Yup.string().required('This field is Required'),
     email: Yup.string().required('This field is Required'),
     number: Yup.string()
@@ -52,16 +51,15 @@ const SignUp = () => {
   });
   const formik = useFormik({
     initialValues: {
-      name: '',
-      email: '',
-      number: '',
+      name:'',
+      email:'',
+      number:'',
       password: '',
       conpassword: ''
     },
     onSubmit:async (values) => {
 
     const response = await  requestsapi(values);
-    console.log(response)
 
     if(response.data.exist === true){
       toast.error('Your already exist',{  icon: ' 🚷 ',
@@ -81,7 +79,7 @@ const SignUp = () => {
       Navigate('/home')
     }
     },
-    validationSchema
+    validationSchema:ValidationSchema
   });
 
   return (
@@ -110,14 +108,14 @@ const SignUp = () => {
         <form className="infoForm loginForm" onSubmit={formik.handleSubmit}>
           <h3>Signup</h3>
           <div >
-            <input
+                  <input
               type="text"
-              // autoFocus="autofocus"
               onChange={formik.handleChange}
               value={formik.values.name}
+              onBlur={formik.handleBlur}
               placeholder="Full name"
-              className="infoInput"
               name="name"
+              className="infoInput"
               />
              
            <label className="validat">{formik.touched.name && formik.errors.name}</label>
@@ -128,34 +126,38 @@ const SignUp = () => {
               type="email"
               onChange={formik.handleChange}
               value={formik.values.email}
+              onBlur={formik.handleBlur}
               placeholder="Email address"
               className="infoInput"
               name="email"
               />
+               
             <span className="validat">{formik.touched.email && formik.errors.email}</span>
           {/* {  toast.error(formik.touched.email && formik.errors.email) } */}
 
           </div>
 
           <div>
-            <input
+                  <input
               type="number"
+              name="number"
               onChange={formik.handleChange}
               value={formik.values.number}
+              onBlur={formik.handleBlur}
               className="infoInput"
               placeholder="PH Number"
-              name="number"
               />
             <span className="validat">{formik.touched.number && formik.errors.number}</span>
           {/* {  toast.error(formik.touched.number && formik.errors.number) } */}
         
           
-          </div>
+          </div>      
           <div>
-            <input
+                      <input
               type="password"
               onChange={formik.handleChange}
               value={formik.values.password}
+              onBlur={formik.handleBlur}
               className="infoInput"
               placeholder="password"
               name="password"
@@ -164,12 +166,12 @@ const SignUp = () => {
             {
             // toast.error(formik.touched.password && formik.errors.password) 
             }
-            <input
+                    <input
               type="password"
               onChange={formik.handleChange}
               value={formik.values.conpassword}
-              className="infoInput"
-              autoFocus 
+              onBlur={formik.handleBlur}
+              className="infoInput"                         
               placeholder="Confirm pssword"
               name="conpassword"
               />

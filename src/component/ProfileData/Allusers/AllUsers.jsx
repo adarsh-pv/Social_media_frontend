@@ -24,19 +24,16 @@ const AllUsers = () => {
   }
   const following = async () =>{
     const response = await followingusers()
-    console.log(response.data[0]?.followinguser,"following users listed here")
     setAlluser(response.data[0]?.followinguser)
   }
  const followers = async () =>{
   const response = await follwersusers()
-  console.log(response.data[0]?.followeruser,"followers usrs listed here")
   setAlluser(response.data[0]?.followeruser)
  }
  useEffect(()=>{
   fetchallusers()
   // followers()
  },[])
- console.log(allusers,"followeingsssssssss")
 
         const [value, setValue] = useState("one")
       

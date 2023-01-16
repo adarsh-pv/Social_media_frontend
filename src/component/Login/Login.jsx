@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/no-unescaped-entities */
-// /* eslint-disable prettier/prettier */
+/* eslint-disable prettier/prettier */
 // import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import './login.css';
@@ -27,13 +27,11 @@ const Login = () => {
     password: Yup.string().required('Required').min(6, 'password atleaste 6 numbers')
   });
   function handleCallbackResponse(response) {
-    console.log('Encoded JWT ID token: ' + response.credential);
     let userObject = jwt_decode(response.credential);
-    console.log(userObject);
     const { email, given_name, family_name } = userObject;
     let guser = {
       email,
-      name: given_name + family_name 
+      name: given_name + family_name
     };
     loginapi(guser);
   }
@@ -55,11 +53,11 @@ const Login = () => {
       email: '',
       password: ''
     },
-    
+
     onSubmit: async (values) => {
 
       let response = await loginapi(values);
-    
+
       if(response.data.maessage === "Invalid password" ){
         toast.error( "Invalid password",{
           icon: ' 🔕 ',
@@ -90,9 +88,8 @@ const Login = () => {
         }
       })
       }
-      
+
       if (response.data.token) {
-        console.log(response)
         // <Navigate to="/home" replace={true} />;
         const Cookie = new cookie();
         localStorage.setItem('userid',response.data._id)
@@ -100,15 +97,15 @@ const Login = () => {
         dispatch(setName(response.data.name));
         dispatch(setAuth(true));
         Cookie.set('token', response.data.token);
-        Navigate('/home');  
+        Navigate('/home');
       }
     },
     validationSchema
   });
-  
+
   return (
     <div className="App">
-<Toaster/>  
+<Toaster/>
       <div className="blur" style={{ top: '-18%', right: '0' }}></div>
       <div className="blur" style={{ top: '36%', left: '-8rem' }}></div>
       <div className="login">
@@ -169,6 +166,5 @@ const Login = () => {
     );
   }
 };
-
-
 export default Login;
+

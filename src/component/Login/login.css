@@ -9,6 +9,7 @@
 }
 .login > div {
   display: flex;
+  margin-left: 50px;
   align-items: center;
   justify-content: center;
 }
@@ -18,10 +19,12 @@
 }
 .a-left > img{
  width: 4rem;
+ /* margin-left: 60px; */
  height: 4rem;
 }
 .Webname > h1{
   font-size: 3rem;
+  /* margin-left: 60px; */
   background-color: rgb(253, 150, 5);
   background-image: var(linear-gradient(98.63deg, #f9a225 0%, #f95f35 100%) );
   background-size: 100%;
@@ -32,6 +35,8 @@
   -moz-text-fill-color: transparent;
 }
 .Webname>h6{
+  /* margin-left: 60px; */
+
   font-size: 0.85rem;
 }
 .infoForm{
@@ -86,6 +91,7 @@
   }
 }
 #signInDiv{
+  margin-top: 10px;
   display: flex;
   justify-content: center;
 }

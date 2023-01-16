@@ -44,7 +44,7 @@ function Post({ post, allpost, actions }) {
   const { userid } = useSelector((state) => state.authReducer);
   const { id } = useParams();
   const deletepost = async (postid) => {
-    setIsLoading(true);
+    setIsLoading(true);  
     const deleted = await deleteposts(postid);
     {
       deleted.data.status === true
@@ -104,12 +104,7 @@ function Post({ post, allpost, actions }) {
       <Toaster />
       {isLoading ? (
         <div>
-          <Circles style={{ backgroundColor: 'orange' }} />
-          <Circles style={{ backgroundColor: 'orange' }} />
-          <Circles style={{ backgroundColor: 'orange' }} />
-          <Circles style={{ backgroundColor: 'orange' }} />
-          <Circles style={{ backgroundColor: 'orange' }} />
-          <Circles style={{ backgroundColor: 'orange' }} />
+          <Circles style={{ backgroundColor: 'orange', }} />
         </div>
       ) : (
         <>
@@ -170,7 +165,7 @@ function Post({ post, allpost, actions }) {
             <div>
               <RWebShare
                 data={{
-                  url: `https://socialmedia-370608.web.app/post/${ids}`
+                  url: `https://letsconnected.netlify.app/post/${ids}`
                   // url:(`http://localhost:3000/post/63ac340e2ae367a71e444154`)
                   // `)
                 }}>

@@ -19,9 +19,9 @@ import Post from '../../Feed/Post/Post';
 import InfoCard from '../../ProfileData/InfoCard/InfoCard';
 import {  useSelector } from 'react-redux';
 import { createCat, createchat, userChats } from '../../../Apirequests/chatapis';
+import { showmyposts } from '../../../Apirequests/postapis';
 
 const ProfileCard = ({location}) => { 
-  console.log(location,"location")
  const [userprofiles,setUsersprofile] = useState('')
  
   console.log(userprofiles,"response")
@@ -29,11 +29,15 @@ const ProfileCard = ({location}) => {
   const [imageSelected, setImageSelected] = useState('');
   const [logdinuser, setLogdinuser] = useState('');
   const [profileimg,setProfileimg] = useState('')
+  const [post,setPost] = useState([])
   const [details,setDetails] = useState({})
-  const {id} = useParams()
   const navigate = useNavigate()
-
-
+  const {id} = useParams()
+console.log(id,"iddd")
+  const posts = async () =>{
+    const response = await showmyposts(id)
+    setPost(response.data)
+  }
   const loginuser = async ()=>{
     const response = await logineduser()
     setLogdinuser(response.data)
@@ -58,6 +62,7 @@ const ProfileCard = ({location}) => {
   useEffect(() => {
     usersprofile() 
   loginuser()
+  posts()
 }, [])
 
   const uploadcoverImage = (e) => {
@@ -86,15 +91,12 @@ const ProfileCard = ({location}) => {
   };
   const uploadImage =async (e) => {
     e.preventDefault();
-    console.log(e.target.files[0], 's');
     const formData = new FormData();
-    console.log('dddd', imageSelected);
     formData.append('file', e.target.files[0]);
     formData.append('upload_preset', 'Profile picture');
     axios
       .post('https://api.cloudinary.com/v1_1/dufx7jvrn/image/upload', formData)
       .then(async(response) => {
-        console.log(response, 'imgssssssssss');
       const profile = await profilephoto(response.data.secure_url);
       setProfileimg(profile)
       if(response.data.type === 'upload'){
@@ -157,7 +159,7 @@ const ProfileCard = ({location}) => {
             <>
               <div className="vl"></div>
               <div className="follow">
-                <span>3</span>
+                <span>{post.length}</span>
                 <span>Posts</span>
               </div>
               <input
