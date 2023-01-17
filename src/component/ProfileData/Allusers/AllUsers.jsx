@@ -10,14 +10,14 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 // import { useEffect } from 'react';
-import { fetchusers, followingusers, follwersusers } from '../../../Apirequests/authapis';
+import { fetchusers, followingusers, follwersusers, getFollowing } from '../../../Apirequests/authapis';
 
 import './alluser.css'
 import Followuser from '../Followuser/Followuser';
  
 const AllUsers = () => {
   const [allusers,setAlluser] = useState([])
-
+  const [getfollowing,setFollowing] = useState([])
   const fetchallusers = async () =>{
     const response = await fetchusers()
    if(response.data)  setAlluser(response.data)
@@ -30,7 +30,12 @@ const AllUsers = () => {
   const response = await follwersusers()
   setAlluser(response.data[0]?.followeruser)
  }
+ const myfollowing = async () =>{
+  const response = await getFollowing()
+  setFollowing(response.data.following)
+ }
  useEffect(()=>{
+  myfollowing()
   fetchallusers()
   // followers()
  },[])
@@ -60,7 +65,7 @@ const AllUsers = () => {
     <Flex gap="lg" wrap="wrap" sx={{marginLeft:"8px"}}>
 
     {allusers?.map((user) =>{ 
-         return <Followuser key={user._id} user={user} />
+         return <Followuser key={user._id} user={user} following={getfollowing}/>
        })}   
        </Flex>
   </div>;

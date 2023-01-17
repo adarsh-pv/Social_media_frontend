@@ -1,18 +1,25 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 import unknownuser from '../../../img/unknown.png';
 import { Card } from '@mantine/core';
 import { follow } from '../../../Apirequests/authapis';
 import {  useNavigate } from 'react-router-dom';
+
 // navigator
-const Followuser = ({user}) => {
+const Followuser = ({user,following}) => {
   const [followbutton, setButton] = useState('');
-  const follows = async (id) => {
-    const response = await follow(id);
-    setButton(response.data);
-};
+    const follows = async (id) => {
+      const {data} = await follow(id);
+      setButton(!followbutton)
+    }
+useEffect(()=>{
+  const res = following.includes(user._id)
+  setButton(res)
+},[following])
 const navigate = useNavigate()
 
   return (
@@ -31,23 +38,17 @@ const navigate = useNavigate()
           <Typography gutterBottom variant="h6" component="div">
             {user?.name}
           </Typography>
-          {followbutton.following ? (
+          {followbutton ? (
             <button
             className="button fc-button"
-            onClick={(e) => {
-              e.preventDefault();
-              follows(user._id);
-            }}>
-            follow
+            onClick={() => follows(user._id)}>
+            unfollow
             </button>
             ) : (
             <button
             className="button fc-button"
-            onClick={(e) => {
-              e.preventDefault();
-              follows(user._id);
-            }}>
-            unfollow
+            onClick={() => { follows(user._id) }}>
+       follow
             </button>
             )}
             </CardContent>

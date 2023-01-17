@@ -10,13 +10,15 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 // import { useEffect } from 'react';
-import { fetchusers, followingusers, follwersusers } from '../../../Apirequests/authapis';
+import { fetchusers, followingusers, follwersusers,getFollowing } from '../../Apirequests/authapis';
+import Followuser from '../ProfileData/Followuser/Followuser';
 
 import './alluser.css'
-import Followuser from '../Followuser/Followuser';
+
  
 const AllUsers = () => {
   const [allusers,setAlluser] = useState([])
+  const [value, setValue] = useState("one")
 
   const fetchallusers = async () =>{
     const response = await fetchusers()
@@ -24,27 +26,27 @@ const AllUsers = () => {
   }
   const following = async () =>{
     const response = await followingusers()
-    console.log(response.data[0]?.followinguser,"following users listed here")
     setAlluser(response.data[0]?.followinguser)
   }
  const followers = async () =>{
   const response = await follwersusers()
-  console.log(response.data[0]?.followeruser,"followers usrs listed here")
   setAlluser(response.data[0]?.followeruser)
  }
- useEffect(()=>{
-  fetchallusers()
-  // followers()
- },[])
- console.log(allusers,"followeingsssssssss")
+ const handleChange = (event, newValue) => {
+  setValue(newValue);
+};
 
-        const [value, setValue] = useState("one")
-      
-        const handleChange = (event, newValue) => {
-          setValue(newValue);
-        };
-      
-  return <div>
+const oombiyafunction=async ()=>{
+  const {data} = await getFollowing()
+  console.log(data,'abhi oru myran')
+}
+useEffect(()=>{
+oombiyafunction()
+  fetchallusers()
+},[])
+
+
+  return (<div>
     <Box  className=''>
       <Tabs
         value={value}
@@ -63,10 +65,11 @@ const AllUsers = () => {
     <Flex gap="lg" wrap="wrap" sx={{marginLeft:"8px"}}>
 
     {allusers?.map((user) =>{ 
-         return <Followuser key={user._id} user={user} />
+         return <Followuser  key={user._id} user={user} />
        })}   
        </Flex>
-  </div>;
-};
+  </div>)
+  
+      }
 
 export default AllUsers;

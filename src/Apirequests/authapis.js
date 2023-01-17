@@ -123,5 +123,12 @@ export const searchengine = async (body) =>{
     console.log(error)
   }
 }
+export const getFollowing = async () =>{
+  try {
+    return await Instance.get('/fetchmyfollowing')
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 

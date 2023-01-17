@@ -158,10 +158,10 @@ console.log(id,"iddd")
           {ProfilePage && (
             <>
               <div className="vl"></div>
-              <div className="follow">
+              {location === 'profile' && <div className="follow">
                 <span>{post.length}</span>
                 <span>Posts</span>
-              </div>
+              </div>}
               <input
                 type="file"
                 onChange={uploadcoverImage}

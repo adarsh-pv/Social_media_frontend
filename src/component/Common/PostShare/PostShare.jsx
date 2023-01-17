@@ -17,6 +17,7 @@ import Circles from 'react-loading-icons/dist/esm/components/circles';
 
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 // import { useState } from 'react'
 const PostShare = ({allpost}) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -24,6 +25,7 @@ const PostShare = ({allpost}) => {
   const [image, setImg] = useState(null);
   const imageRef = useRef();
   const [imageSelected, setImageSelected] = useState('');
+
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
@@ -76,7 +78,8 @@ const PostShare = ({allpost}) => {
         </div> ):
     (
       <>
-      <img src={ProfileImage} alt="" />
+      
+      <b>Share<br/>Your<br/>Thoughts</b>
       <div>
         <input
           type="text"
@@ -99,10 +102,6 @@ const PostShare = ({allpost}) => {
           <div className="option" style={{ color: '#EF5757' }}>
             <UilBookmark onClick={()=>navigate('/savedpost')}/>
             Savedposts
-          </div>
-          <div className="option" style={{ color: '#E1AE4A' }}>
-            <UilSchedule />
-            Shedule
           </div>
           <button type="submit" onClick={uploadImage} className="button ps-button">
             Share
