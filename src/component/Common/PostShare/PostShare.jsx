@@ -1,12 +1,11 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/prop-types */
 /* eslint-disable prettier/prettier */
+/* eslint-disable no-undef */
 import React, { useState, useRef } from 'react';
-import ProfileImage from '../../../img/profileImg.jpg';
 import './PostShare.css';
 import { UilScenery } from '@iconscout/react-unicons';
 import { UilUser } from '@iconscout/react-unicons';
-import { UilSchedule } from '@iconscout/react-unicons';
 import { UilTimes } from '@iconscout/react-unicons';
 import { createpost } from '../../../Apirequests/postapis';
 import { UilBookmark } from '@iconscout/react-unicons';
@@ -17,8 +16,6 @@ import Circles from 'react-loading-icons/dist/esm/components/circles';
 
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-// import { useState } from 'react'
 const PostShare = ({allpost}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [text, setText] = useState('');

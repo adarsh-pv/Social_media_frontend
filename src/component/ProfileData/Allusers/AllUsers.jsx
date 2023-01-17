@@ -2,14 +2,12 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable prettier/prettier */
 ;
-import { Box,Flex, Tabs } from '@mantine/core';
-// import { CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';  
+import { Box,Flex, Tabs } from '@mantine/core'; 
 
 import Tab from '@mui/material/Tab';
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-// import { useEffect } from 'react';
 import { fetchusers, followingusers, follwersusers, getFollowing } from '../../../Apirequests/authapis';
 
 import './alluser.css'
